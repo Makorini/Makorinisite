@@ -1,0 +1,13 @@
+node_modules/
+data/
+*.log
+.env
+data/
+uploads/
+node_modules/
+.env
+.env.*
+*.sqlite
+*.sqlite-*
+*.db
+*.log

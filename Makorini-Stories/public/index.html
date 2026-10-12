@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <!-- Metadados e identidade -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#12152b">
+  <title>Makorini Stories | Explore histórias</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <!-- Navegação pública e entrada da administração -->
+  <header>
+    <a class="brand" href="#inicio">
+      <img class="brand-avatar" src="assets/brand-mascot-star.png" alt="" aria-hidden="true">
+      <span class="brand-copy">
+        <span class="brand-line"><span class="brand-script">Makorini</span><span class="brand-sub">Stories</span></span>
+        <small>ONDE CADA HISTÓRIA ENCONTRA SEU LEITOR</small>
+      </span>
+    </a>
+    <nav id="navigation" aria-label="Navegação principal"><a href="#inicio">Explorar</a><a href="#categorias">Gêneros</a><a href="#favoritos">Favoritos</a></nav>
+    <details id="admin-menu" class="admin-menu"><summary aria-label="Acesso administrativo" title="Acesso administrativo">⚙</summary><div id="admin-links" class="admin-menu-links"><a href="#entrar">Área da administradora</a></div></details>
+    <button id="theme" class="icon" type="button" aria-label="Alternar tema">◐</button>
+  </header>
+  <!-- O JavaScript renderiza o catálogo, a leitura e o painel -->
+  <main id="app"><p>Carregando Makorini Stories…</p></main>
+  <!-- Rodapé com páginas públicas -->
+  <footer class="public-footer">
+    <p><small>© 2026 Makorini Stories</small></p>
+    <div class="footer-links">
+      <a href="#sobre">Sobre nós</a>
+      <a href="#privacidade">Política de Privacidade</a>
+      <a href="#termos">Termos de Uso</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </footer>
+  <!-- Acessibilidade e avisos -->
+  <div class="scroll-controls" role="group" aria-label="Navegação vertical da página"><button id="scroll-top" type="button" aria-label="Voltar ao topo da página" title="Voltar ao topo">↑</button><button id="scroll-bottom" type="button" aria-label="Ir ao final da página" title="Ir ao final">↓</button></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
