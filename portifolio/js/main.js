@@ -44,34 +44,41 @@
     /* ---------- Cartões de projeto ---------- */
     const projetos = window.PROJETOS || [];
     const grid = $("#project-grid");
-    const linkNames = { demo: "Ver demonstração ↗", site: "Ver site ↗", video: "Assistir vídeo ↗", codigo: "Código no GitHub ↗" };
+    const linkKeys = { demo: "card.demo", site: "card.site", video: "card.video", codigo: "card.code" };
+    // Texto do projeto no idioma atual (campo "en" em projects.js; se faltar, usa o português).
+    const L = (p, campo) => (getLang() === "en" && p.en && p.en[campo]) || p[campo] || "";
+    let filtroAtual = "todos";
 
-    grid.innerHTML = projetos.map((p) => {
-        const thumb = p.imagem
-            ? `<img src="${esc(p.imagem)}" alt="Tela do projeto ${esc(p.titulo)}" loading="lazy">`
-            : `<div class="thumb-mark"><div><small>✦ projeto ✦</small>${esc(p.titulo)}</div></div>`;
-        const links = Object.entries(p.links || {})
-            .filter(([, url]) => url)
-            .map(([k, url]) => `<a href="${esc(url)}"${k === "demo" ? "" : ' target="_blank" rel="noopener"'}>${linkNames[k] || k}</a>`)
-            .join("");
-        return `
-        <article class="project-card reveal" data-cat="${esc(p.categorias.join(" "))}">
-            <div class="project-thumb">${thumb}<span class="project-badge">${esc(p.selo)}</span></div>
-            <div class="project-body">
-                <div class="project-top">${esc(p.ano)}</div>
-                <h3>${esc(p.titulo)}</h3>
-                <p>${esc(p.descricao)}</p>
-                <ul class="tags">${p.tags.map((t) => `<li>${esc(t)}</li>`).join("")}</ul>
-                <div class="project-links">${links || '<span class="project-top">Projeto privado de cliente</span>'}</div>
-            </div>
-        </article>`;
-    }).join("");
+    function renderProjects(jaVisiveis) {
+        grid.innerHTML = projetos.map((p) => {
+            const thumb = p.imagem
+                ? `<img src="${esc(p.imagem)}" alt="${esc(t("card.alt") + p.titulo)}" loading="lazy">`
+                : `<div class="thumb-mark"><div><small>${t("card.star")}</small>${esc(p.titulo)}</div></div>`;
+            const links = Object.entries(p.links || {})
+                .filter(([, url]) => url)
+                .map(([k, url]) => `<a href="${esc(url)}"${k === "demo" ? "" : ' target="_blank" rel="noopener"'}>${t(linkKeys[k]) || k}</a>`)
+                .join("");
+            const oculto = filtroAtual !== "todos" && !p.categorias.includes(filtroAtual);
+            return `
+            <article class="project-card reveal${jaVisiveis ? " visible" : ""}" data-cat="${esc(p.categorias.join(" "))}"${oculto ? " hidden" : ""}>
+                <div class="project-thumb">${thumb}<span class="project-badge">${esc(L(p, "selo"))}</span></div>
+                <div class="project-body">
+                    <div class="project-top">${esc(p.ano)}</div>
+                    <h3>${esc(p.titulo)}</h3>
+                    <p>${esc(L(p, "descricao"))}</p>
+                    <ul class="tags">${p.tags.map((tag) => `<li>${esc(tag)}</li>`).join("")}</ul>
+                    <div class="project-links">${links || `<span class="project-top">${t("card.private")}</span>`}</div>
+                </div>
+            </article>`;
+        }).join("");
+    }
+    renderProjects(false);
 
     $$(".filter").forEach((btn) => btn.addEventListener("click", () => {
         $$(".filter").forEach((b) => b.classList.toggle("active", b === btn));
-        const f = btn.dataset.filter;
+        filtroAtual = btn.dataset.filter;
         $$(".project-card").forEach((card) => {
-            card.hidden = f !== "todos" && !card.dataset.cat.split(" ").includes(f);
+            card.hidden = filtroAtual !== "todos" && !card.dataset.cat.split(" ").includes(filtroAtual);
         });
     }));
 
@@ -82,29 +89,55 @@
     let caption = document.createElement("div");
     caption.className = "demo-caption";
     frame.appendChild(caption);
+    let demoAtual = null;
+
+    function demoTexts(p) {
+        const d = p.demo;
+        caption.textContent = (getLang() === "en" && p.en && p.en.legenda) || d.legenda || "";
+        if (d.tipo === "iframe") url.textContent = "makorini.github.io/Makorinisite/portifolio/" + d.src;
+        else if (d.tipo === "video") url.textContent = t("demos.video") + p.titulo;
+        else url.textContent = p.links.site ? p.links.site.replace(/^https?:\/\//, "") : p.titulo;
+    }
 
     function showDemo(p) {
-        $$(".demo-tab", tabs).forEach((t) => t.setAttribute("aria-selected", t.dataset.id === p.id));
+        demoAtual = p;
+        $$(".demo-tab", tabs).forEach((tab) => tab.setAttribute("aria-selected", tab.dataset.id === p.id));
         const d = p.demo;
-        caption.textContent = d.legenda || "";
         if (d.tipo === "iframe") {
-            view.innerHTML = `<iframe src="${esc(d.src)}" title="Demonstração: ${esc(p.titulo)}" loading="lazy"></iframe>`;
-            url.textContent = "makorini.github.io/Makorinisite/portifolio/" + d.src;
+            view.innerHTML = `<iframe src="${esc(d.src)}" title="${esc(p.titulo)}" loading="lazy"></iframe>`;
             open.href = d.src;
         } else if (d.tipo === "video") {
-            view.innerHTML = `<iframe src="${esc(d.src)}" title="Vídeo: ${esc(p.titulo)}" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
-            url.textContent = "Vídeo de demonstração — " + p.titulo;
+            view.innerHTML = `<iframe src="${esc(d.src)}" title="${esc(p.titulo)}" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
             open.href = p.links.video || d.src;
         } else {
             view.innerHTML = `<img src="${esc(d.src)}" alt="${esc(d.legenda || p.titulo)}" loading="lazy">`;
-            url.textContent = p.links.site ? p.links.site.replace(/^https?:\/\//, "") : p.titulo;
             open.href = p.links.site || d.src;
         }
+        demoTexts(p);
     }
 
     tabs.innerHTML = demos.map((p) => `<button class="demo-tab" role="tab" type="button" data-id="${esc(p.id)}">${esc(p.titulo)}</button>`).join("");
-    $$(".demo-tab", tabs).forEach((t) => t.addEventListener("click", () => showDemo(demos.find((p) => p.id === t.dataset.id))));
+    $$(".demo-tab", tabs).forEach((tab) => tab.addEventListener("click", () => showDemo(demos.find((p) => p.id === tab.dataset.id))));
     if (demos.length) showDemo(demos.find((p) => p.demo.tipo === "iframe") || demos[0]);
+
+    /* ---------- Idioma (PT / EN) ---------- */
+    function applyLang(lang, mudou) {
+        try { localStorage.setItem("makorini-lang", lang); } catch (e) {}
+        document.documentElement.lang = lang === "en" ? "en" : "pt-BR";
+        document.title = t("meta.title");
+        $('meta[name="description"]').setAttribute("content", t("meta.description"));
+        $$("[data-i18n]").forEach((el) => { el.textContent = t(el.dataset.i18n); });
+        $$("[data-i18n-html]").forEach((el) => { el.innerHTML = t(el.dataset.i18nHtml); });
+        $$("[data-i18n-aria]").forEach((el) => { el.setAttribute("aria-label", t(el.dataset.i18nAria)); });
+        $$(".lang-option").forEach((b) => b.setAttribute("aria-pressed", b.dataset.lang === lang));
+        if (mudou) {
+            renderProjects(true);
+            if (demoAtual) demoTexts(demoAtual);
+            const st = $("#form-status"); if (st) st.textContent = "";
+        }
+    }
+    $$(".lang-option").forEach((b) => b.addEventListener("click", () => applyLang(b.dataset.lang, true)));
+
 
     /* ---------- Animação de entrada ---------- */
     const rev = new IntersectionObserver((entries) => {
@@ -120,7 +153,7 @@
         const btn = form.querySelector("button[type=submit]");
         btn.disabled = true;
         status.className = "form-status";
-        status.textContent = "Enviando…";
+        status.textContent = t("form.sending");
         try {
             const data = Object.fromEntries(new FormData(form));
             const resp = await fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
@@ -131,14 +164,15 @@
             if (!resp.ok) throw new Error(resp.status);
             form.reset();
             status.className = "form-status ok";
-            status.textContent = "Mensagem enviada! Obrigada pelo contato ✦";
+            status.textContent = t("form.ok");
         } catch (err) {
             status.className = "form-status err";
-            status.innerHTML = 'Não foi possível enviar agora. Escreva direto para <a href="mailto:bianca.maccarini@gmail.com">bianca.maccarini@gmail.com</a>.';
+            status.innerHTML = t("form.err");
         } finally {
             btn.disabled = false;
         }
     });
 
     $("#year").textContent = new Date().getFullYear();
+    applyLang(getLang(), false);
 })();

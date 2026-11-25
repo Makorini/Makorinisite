@@ -236,10 +236,10 @@ header{gap:24px}.brand{font-size:23px}nav{margin-left:12px;gap:20px}@media(max-w
 .reader-field input[type=range]::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#fff;border:3px solid #8462c1}
 .reader-field select{color:var(--ink);background:var(--paper);padding:8px;border-radius:8px;border:1px solid var(--line);max-width:none}
 .reader-field select option{background:var(--paper);color:var(--ink)}
-.reader-head-card{background-image:linear-gradient(100deg,rgba(248,245,255,.95),rgba(245,240,255,.91)),url('/assets/nuvem-azul-roxa.png');background-size:cover;background-position:center}
-.dark .reader-head-card{background-image:linear-gradient(100deg,rgba(17,18,38,.91),rgba(27,21,49,.90)),url('/assets/nuvem-azul-roxa.png')}
+.reader-head-card{background-image:linear-gradient(100deg,rgba(248,245,255,.95),rgba(245,240,255,.91)),url('assets/nuvem-azul-roxa.png');background-size:cover;background-position:center}
+.dark .reader-head-card{background-image:linear-gradient(100deg,rgba(17,18,38,.91),rgba(27,21,49,.90)),url('assets/nuvem-azul-roxa.png')}
 .rating-panel{position:relative;isolation:isolate;overflow:hidden;border-radius:16px;padding:28px}
-.rating-panel:before{content:'';position:absolute;inset:-25px;z-index:-1;background:linear-gradient(90deg,var(--paper),transparent),url('/assets/nuvem-azul-roxa.png') center/cover;filter:blur(17px);opacity:.25}
+.rating-panel:before{content:'';position:absolute;inset:-25px;z-index:-1;background:linear-gradient(90deg,var(--paper),transparent),url('assets/nuvem-azul-roxa.png') center/cover;filter:blur(17px);opacity:.25}
 .rating-buttons{display:flex;flex-wrap:wrap;gap:8px}.rating-star{border-radius:50%!important;background:var(--wash)!important;border:1px solid var(--line)!important;width:44px;height:44px;padding:0!important;transition:transform .2s,background .2s}.rating-star:hover{transform:translateY(-3px)}
 .chapters a{gap:20px;align-items:center}.chapters small{white-space:nowrap;color:var(--pink)}
 @media(max-width:1000px){.catalog-layout{grid-template-columns:minmax(0,1fr) 220px}.catalog-main .grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
