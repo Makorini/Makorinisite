@@ -25,7 +25,7 @@ window.PROJETOS = [
         descricao: "Sistema especialista para diagnóstico de doenças em videiras com regras SE/ENTÃO e fatores de certeza, catálogo de doenças e pragas, clima e notícias. Em português, inglês e espanhol.",
         en: { selo: "Thesis", descricao: "Expert system that diagnoses grapevine diseases using IF/THEN rules and certainty factors, with a disease and pest catalog, weather and news. Available in Portuguese, English and Spanish.", legenda: "VitiExpert architecture: web interface, inference engine and knowledge base." },
         tags: ["Python", "Flask", "Sistemas Especialistas", "JavaScript", "Pytest"],
-        imagem: "assets/img/vitiexpert.png",
+        imagem: "assets/img/capas/vitiexpert.jpg",
         links: { codigo: "https://github.com/SEU-USUARIO/VitiExpert" },
         demo: { tipo: "imagem", src: "assets/img/vitiexpert-arquitetura.png", legenda: "Arquitetura do VitiExpert: interface web, motor de inferência e base de conhecimento." }
     },
@@ -38,7 +38,7 @@ window.PROJETOS = [
         descricao: "Leitor de contos e histórias curtas: catálogo com busca e gêneros, estante de favoritos, leitor estilo Kindle com sumário, busca no livro, marcadores e temas claro e escuro. Versão estática do front do Makorini Stories.",
         en: { selo: "Live", descricao: "Reader for short stories: catalog with search and genres, favorites shelf, Kindle-style reader with table of contents, in-book search, bookmarks and light/dark themes. Static version of the Makorini Stories front end (stories in Portuguese)." },
         tags: ["HTML", "CSS", "JavaScript", "Node.js (versão completa)", "SQLite"],
-        imagem: "",
+        imagem: "assets/img/capas/makorini-books.jpg",
         links: { demo: "demos/makorini-books/index.html" },
         demo: { tipo: "iframe", src: "demos/makorini-books/index.html" }
     },
@@ -64,7 +64,7 @@ window.PROJETOS = [
         descricao: "Plataforma autoral de publicação de novels, mangás, manhwas e webtoons, com catálogo público, painel da autora protegido por senha e capítulos em texto, imagens ou PDF.",
         en: { descricao: "Publishing platform for novels, manga, manhwa and webtoons, with a public catalog, a password-protected author dashboard and chapters as text, images or PDF." },
         tags: ["Node.js", "SQLite", "JavaScript", "Autenticação"],
-        imagem: "",
+        imagem: "assets/img/capas/makorini-biblioteca.jpg",
         links: { codigo: "https://github.com/SEU-USUARIO/makorini-biblioteca" }
     },
     {
@@ -76,7 +76,7 @@ window.PROJETOS = [
         descricao: "Sistema de recomendação de filmes com base nos gostos do usuário: gêneros, atores, diretores e avaliações anteriores. Projeto em equipe (CineMasters).",
         en: { selo: "Team", descricao: "Movie recommendation system based on user taste: genres, actors, directors and previous ratings. Team project (CineMasters)." },
         tags: ["React", "Node.js", "API REST"],
-        imagem: "",
+        imagem: "assets/img/capas/cinematch.jpg",
         links: { codigo: "https://github.com/SEU-USUARIO/CineMatch" }
     },
     {
@@ -93,14 +93,14 @@ window.PROJETOS = [
     },
     {
         id: "gestao-salao",
-        titulo: "Bella Salon",
-        selo: "Cliente",
+        titulo: "Makorini Sistema Gestão",
+        selo: "Gestão",
         ano: "2025",
         categorias: ["sistema", "web"],
-        descricao: "Sistema de gestão para o salão Bella Salon com agendamento público, página de apresentação, localização e painel interno, sem custo de servidor.",
-        en: { selo: "Client", descricao: "Management system for Bella Salon with online booking, a presentation page, location page and an internal dashboard — no server costs." },
+        descricao: "Sistema de gestão com login de usuários, agendamento online, página de apresentação, localização e painel interno, feito com Google Apps Script e Google Sheets — sem custo de servidor.",
+        en: { selo: "Management", descricao: "Management system with user login, online booking, presentation and location pages and an internal dashboard, built with Google Apps Script and Google Sheets — no server costs." },
         tags: ["Google Apps Script", "Google Sheets", "HTML", "CSS"],
-        imagem: "",
+        imagem: "assets/img/capas/makorini-sistema-gestao.jpg",
         links: { site: "https://script.google.com/macros/s/AKfycbwbTrMEKG1gZw4V8BJuZ4YY0OnjuIDKIDDV_JdqSItHBNS2A0iUz9VR9yGUUb2RU5Ag/exec?pagina=publico" }
     },
     {
@@ -112,7 +112,7 @@ window.PROJETOS = [
         descricao: "Base de plataforma integrada com cadastro, login com Argon2id, sessões e dashboard responsivo com tema claro pastel e escuro cósmico.",
         en: { selo: "In progress", descricao: "Foundation for an integrated platform with sign-up, Argon2id login, sessions and a responsive dashboard with pastel light and cosmic dark themes." },
         tags: ["Node.js", "Express", "MySQL", "Argon2"],
-        imagem: "",
+        imagem: "assets/img/capas/makorini-platform.jpg",
         links: { codigo: "https://github.com/SEU-USUARIO/makorini-platform" }
     }
 ];
