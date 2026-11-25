@@ -36,8 +36,8 @@ window.PROJETOS = [
         descricao: "Leitor de contos e histórias curtas: catálogo com busca e gêneros, estante de favoritos, leitor estilo Kindle com sumário, busca no livro, marcadores e temas claro e escuro. Versão estática do front do Makorini Stories.",
         tags: ["HTML", "CSS", "JavaScript", "Node.js (versão completa)", "SQLite"],
         imagem: "",
-        links: { demo: "demos/makorini-books/" },
-        demo: { tipo: "iframe", src: "demos/makorini-books/" }
+        links: { demo: "demos/makorini-books/index.html" },
+        demo: { tipo: "iframe", src: "demos/makorini-books/index.html" }
     },
     {
         id: "vitoria-beauty",

@@ -56,7 +56,8 @@ $('#theme').onclick=()=>{document.body.classList.toggle('dark');try{localStorage
 /* MODO ESTÁTICO (Makorini Books no GitHub Pages): lê JSON exportado em vez do servidor. */
 const STATIC_READONLY='Esta é uma demonstração somente leitura do Makorini Books.';
 const foldTxt=s=>String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
-async function staticJSON(p){const r=await fetch(p);if(!r.ok)throw Error('Conteúdo não encontrado.');return r.json()}
+// Os dados vêm de data/dados.js (window.MAKORINI_DATA): funciona no GitHub Pages e também abrindo o arquivo direto do disco.
+async function staticJSON(p){const d=(window.MAKORINI_DATA||{})[p];if(!d)throw Error('Conteúdo não encontrado.');return structuredClone(d)}
 async function api(url,method='GET',body){
  const [p,qs]=url.split('?');let m;
  if(method!=='GET'){if(/\/progress$/.test(p))return {ok:true};throw Error(STATIC_READONLY)}
