@@ -1022,3 +1022,39 @@ body.nav-active { overflow: hidden; }
 .lang-option img { width: 18px; height: 12px; object-fit: cover; }
 .lang-option:is(:hover, :focus-visible) { opacity: 1; }
 .lang-option[aria-pressed="true"] { opacity: 1; background-color: var(--white); color: var(--eerie-black); }
+
+/*-----------------------------------*\
+  #HERO: MAKORINI com borda preta (layout original mantido)
+\*-----------------------------------*/
+
+.hero-title {
+  -webkit-text-stroke: 3px #000;
+  paint-order: stroke fill;
+  text-shadow: 3px 3px 0 #000;
+}
+
+/* "Onde sua ideia se moderniza" também com borda preta */
+.hero-subtitle {
+  -webkit-text-stroke: 3px #000;
+  paint-order: stroke fill;
+  text-shadow: 2px 2px 0 #000;
+}
+
+/* Celular: logo menor e seletor de idioma compacto para caber ao lado do menu */
+@media (max-width: 575px) {
+  .header .logo img { width: 140px; height: auto; }
+  .header-actions { gap: 8px; }
+  .lang-option { padding: 8px 9px; gap: 0; }
+  .lang-option img { display: none; }
+}
+
+/* Texto e botões abaixo do título: começam depois da foto, para ficarem legíveis.
+   (A foto ocupa 55% da largura; o título continua encostando nela.) */
+@media (min-width: 768px) {
+  .hero .section-text,
+  .hero .hero-cta { padding-inline-start: 14%; }
+}
+@media (min-width: 1200px) {
+  .hero .section-text,
+  .hero .hero-cta { padding-inline-start: 22%; }
+}
