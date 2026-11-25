@@ -12,8 +12,8 @@
   if (!janela || !form) return;
 
   const msg = {
-    pt: { sending: "Enviando…", ok: "Mensagem enviada! Obrigada pelo contato ✦", err: "Não foi possível enviar agora. Escreva para makorini.dev@gmail.com.", ativacao: "O formulário ainda precisa ser ativado: a dona do site recebeu um e-mail do FormSubmit para confirmar. Enquanto isso, escreva para makorini.dev@gmail.com." },
-    en: { sending: "Sending…", ok: "Message sent! Thank you for reaching out ✦", err: "Couldn't send right now. Please email makorini.dev@gmail.com.", ativacao: "This form still needs to be activated (a confirmation email was sent to the site owner). Meanwhile, please email makorini.dev@gmail.com." }
+    pt: { sending: "Enviando…", ok: "Mensagem enviada! Obrigada pelo contato ✦", err: "Não foi possível enviar agora. Escreva para makorini.dev@gmail.com.", abrindo: "O serviço de envio não respondeu. Abrimos seu app de e-mail com a mensagem pronta: é só enviar.", ativacao: "O formulário ainda precisa ser ativado: a dona do site recebeu um e-mail do FormSubmit para confirmar. Enquanto isso, escreva para makorini.dev@gmail.com." },
+    en: { sending: "Sending…", ok: "Message sent! Thank you for reaching out ✦", err: "Couldn't send right now. Please email makorini.dev@gmail.com.", abrindo: "The sending service did not respond. We opened your email app with the message ready: just hit send.", ativacao: "This form still needs to be activated (a confirmation email was sent to the site owner). Meanwhile, please email makorini.dev@gmail.com." }
   };
   const lang = () => (document.documentElement.lang === "en" ? "en" : "pt");
   let voltarPara = null;
@@ -42,6 +42,12 @@
   janela.addEventListener("click", (e) => { if (e.target === janela) fechar(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !janela.hidden) fechar(); });
 
+  // Plano B: se o FormSubmit não responder, abre o app de e-mail de quem escreve, com tudo preenchido.
+  function abrirEmail(dados) {
+    const corpo = `Nome: ${dados.nome || ""}\nE-mail: ${dados.email || ""}\n\n${dados.mensagem || ""}`;
+    location.href = "mailto:makorini.dev@gmail.com?subject=" + encodeURIComponent(dados._subject || "Contato pelo site Makorini") + "&body=" + encodeURIComponent(corpo);
+  }
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     if (form._honey.value) return; // robô preencheu o campo escondido
@@ -51,11 +57,16 @@
     status.textContent = msg[lang()].sending;
     try {
       const dados = Object.fromEntries(new FormData(form));
+      // Espera no máximo 10 segundos pelo FormSubmit.
+      const ctrl = new AbortController();
+      const limite = setTimeout(() => ctrl.abort(), 10000);
       const resp = await fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
+        signal: ctrl.signal,
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(dados)
       });
+      clearTimeout(limite);
       // O FormSubmit responde 200 mesmo quando recusa (ex.: formulário ainda não ativado),
       // então é preciso ler "success" e "message" da resposta.
       let r = {};
@@ -70,7 +81,12 @@
       status.textContent = msg[lang()].ok;
     } catch (err) {
       status.className = "contact-dialog-status err";
-      status.textContent = err.ativacao ? msg[lang()].ativacao : msg[lang()].err;
+      if (err.ativacao) {
+        status.textContent = msg[lang()].ativacao;
+      } else {
+        status.textContent = msg[lang()].abrindo;
+        abrirEmail(Object.fromEntries(new FormData(form)));
+      }
       console.warn("FormSubmit:", err.message);
     } finally {
       botao.disabled = false;

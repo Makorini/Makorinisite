@@ -148,6 +148,13 @@
 
     /* ---------- Formulário de contato (FormSubmit, sem servidor) ---------- */
     const form = $("#contact-form"), status = $("#form-status");
+
+    // Plano B: se o FormSubmit não responder, abre o app de e-mail de quem escreve, com tudo preenchido.
+    function abrirEmail(dados) {
+        const corpo = `Nome: ${dados.nome || ""}\nE-mail: ${dados.email || ""}\nAssunto: ${dados.assunto || ""}\n\n${dados.mensagem || ""}`;
+        location.href = "mailto:makorini.dev@gmail.com?subject=" + encodeURIComponent(dados._subject || "Contato pelo site Makorini") + "&body=" + encodeURIComponent(corpo);
+    }
+
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
         if (form._honey.value) return;               // robô preencheu o campo oculto
@@ -157,26 +164,36 @@
         status.textContent = t("form.sending");
         try {
             const data = Object.fromEntries(new FormData(form));
+            // Espera no máximo 10 segundos pelo FormSubmit.
+            const ctrl = new AbortController();
+            const limite = setTimeout(() => ctrl.abort(), 10000);
             const resp = await fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
+                signal: ctrl.signal,
                 method: "POST",
                 headers: { "Content-Type": "application/json", Accept: "application/json" },
                 body: JSON.stringify(data)
             });
+            clearTimeout(limite);
             // O FormSubmit responde 200 mesmo quando recusa (ex.: formulário ainda não ativado),
             // então é preciso ler "success" e "message" da resposta.
             let r = {};
             try { r = await resp.json(); } catch (x) {}
             if (!resp.ok || String(r.success) !== "true") {
-              const erro = new Error(r.message || String(resp.status));
-              erro.ativacao = /activat/i.test(r.message || "");
-              throw erro;
+                const erro = new Error(r.message || String(resp.status));
+                erro.ativacao = /activat/i.test(r.message || "");
+                throw erro;
             }
             form.reset();
             status.className = "form-status ok";
             status.textContent = t("form.ok");
         } catch (err) {
             status.className = "form-status err";
-            status.innerHTML = err.ativacao ? t("form.activate") : t("form.err");
+            if (err.ativacao) {
+                status.innerHTML = t("form.activate");
+            } else {
+                status.innerHTML = t("form.mailto");
+                abrirEmail(Object.fromEntries(new FormData(form)));
+            }
             console.warn("FormSubmit:", err.message);
         } finally {
             btn.disabled = false;
