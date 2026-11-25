@@ -43,19 +43,6 @@ window.PROJETOS = [
         demo: { tipo: "iframe", src: "demos/makorini-books/index.html" }
     },
     {
-        id: "vitoria-beauty",
-        titulo: "Vitoria Beauty",
-        selo: "E-commerce",
-        ano: "2025",
-        categorias: ["web", "sistema"],
-        descricao: "E-commerce de cosméticos fullstack com Server Components, autenticação, carrinho e banco de dados via Prisma.",
-        en: { descricao: "Full-stack cosmetics e-commerce with Server Components, authentication, shopping cart and a Prisma database.", legenda: "Store home page. The full version is live on Vercel." },
-        tags: ["Next.js", "TypeScript", "Prisma", "Tailwind"],
-        imagem: "assets/img/vitoria-beauty.png",
-        links: { site: "https://vitoria-beauty.vercel.app/", codigo: "https://github.com/SEU-USUARIO/Makorinistore" },
-        demo: { tipo: "imagem", src: "assets/img/vitoria-beauty.png", legenda: "Página inicial da loja. A versão completa está publicada na Vercel." }
-    },
-    {
         id: "makorini-translator",
         titulo: "Makorini Translator",
         selo: "IA",
