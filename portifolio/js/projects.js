@@ -77,8 +77,7 @@ window.PROJETOS = [
         en: { selo: "Team", descricao: "Movie recommendation system based on user taste: genres, actors, directors and previous ratings. Team project (CineMasters)." },
         tags: ["React", "Node.js", "API REST"],
         imagem: "",
-        links: { video: "https://youtu.be/G0Wrkv0AChA", codigo: "https://github.com/SEU-USUARIO/CineMatch" },
-        demo: { tipo: "video", src: "https://www.youtube-nocookie.com/embed/G0Wrkv0AChA" }
+        links: { codigo: "https://github.com/SEU-USUARIO/CineMatch" }
     },
     {
         id: "recappro",
