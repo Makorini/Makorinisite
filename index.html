@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="./css/style.css?v=8">
+  <link rel="stylesheet" href="./css/style.css?v=12">
 
   <link rel="preload" as="image" href="./images/hero-banner.jpg">
 
@@ -50,7 +50,7 @@
         <ul class="navbar-list">
           <li><a href="./portifolio/" class="navbar-link" data-i18n="nav.projects">Ver projetos</a></li>
           <li><a href="./portifolio/assets/curriculo-bianca-maccarini.pdf" target="_blank" rel="noopener" class="navbar-link" data-cv data-i18n="nav.cv">Currículo</a></li>
-          <li><a href="#contact" class="navbar-link" data-i18n="nav.contact">Contato</a></li>
+          <li><a href="#contact" class="navbar-link" data-open-contact data-i18n="nav.contact">Contato</a></li>
         </ul>
       </nav>
 
@@ -93,7 +93,7 @@
                 <ion-icon name="document-text-outline" aria-hidden="true"></ion-icon>
               </a>
 
-              <a href="#contact" class="btn has-before">
+              <a href="#contact" class="btn has-before" data-open-contact>
                 <span class="span" data-i18n="btn.contact">Entrar em contato</span>
                 <ion-icon name="chatbubble-outline" aria-hidden="true"></ion-icon>
               </a>
@@ -121,8 +121,42 @@
     </div>
   </footer>
 
+  <!-- Janela "Entrar em contato": envia e-mail para makorini.dev@gmail.com pelo FormSubmit (sem servidor). -->
+  <div class="contact-dialog" id="contact-dialog" role="dialog" aria-modal="true" aria-labelledby="contact-dialog-title" hidden>
+    <form class="contact-dialog-form" id="contact-dialog-form" action="https://formsubmit.co/makorini.dev@gmail.com" method="POST">
+      <button class="contact-dialog-close" type="button" data-close-contact aria-label="Fechar">
+        <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
+      </button>
+
+      <p class="h4 contact-dialog-title" id="contact-dialog-title" data-i18n="dialog.title">Entrar em contato</p>
+      <p class="contact-dialog-text" data-i18n="dialog.text">Escreva sua mensagem. Ela chega direto no meu e-mail.</p>
+
+      <input type="hidden" name="_subject" value="Nova mensagem pelo cartão Makorini">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" class="contact-dialog-honey" tabindex="-1" autocomplete="off">
+
+      <label><span data-i18n="dialog.name">Nome</span>
+        <input type="text" name="nome" required autocomplete="name">
+      </label>
+      <label><span data-i18n="dialog.email">Seu e-mail</span>
+        <input type="email" name="email" required autocomplete="email">
+      </label>
+      <label><span data-i18n="dialog.message">Mensagem</span>
+        <textarea name="mensagem" rows="5" required></textarea>
+      </label>
+
+      <button class="contact-dialog-send" type="submit">
+        <span data-i18n="dialog.send">Enviar</span>
+        <ion-icon name="send-outline" aria-hidden="true"></ion-icon>
+      </button>
+      <p class="contact-dialog-status" id="contact-dialog-status" role="status"></p>
+    </form>
+  </div>
+
   <script src="./js/script.js"></script>
-  <script src="./js/idioma.js?v=1"></script>
+  <script src="./js/idioma.js?v=2"></script>
+  <script src="./js/contato.js?v=2"></script>
 
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

@@ -1058,3 +1058,82 @@ body.nav-active { overflow: hidden; }
   .hero .section-text,
   .hero .hero-cta { padding-inline-start: 22%; }
 }
+
+/*-----------------------------------*\
+  #JANELA "ENTRAR EM CONTATO"
+\*-----------------------------------*/
+
+.contact-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: hsla(228, 9%, 6%, .8);
+  overflow: auto;
+}
+.contact-dialog[hidden] { display: none; }
+.contact-dialog:not([hidden]) .contact-dialog-form { animation: contato-abrir .25s ease; }
+@keyframes contato-abrir { from { opacity: 0; transform: translateY(16px) scale(.97); } to { opacity: 1; transform: none; } }
+body.contact-open { overflow: hidden; }
+
+.contact-dialog-form { position: relative; display: grid; gap: 14px; width: min(520px, 100%); padding: 36px 32px 28px; border: 1px solid var(--white_a10); border-radius: 24px; background-color: var(--raisin-black); color: var(--white); box-shadow: 0 30px 80px hsla(0, 0%, 0%, .6); }
+.contact-dialog-title { font-size: 2.4rem; margin-block-end: 0; }
+.contact-dialog-text { color: var(--white); opacity: .7; font-size: 1.5rem; margin-block-end: 6px; }
+.contact-dialog-form label { display: grid; gap: 6px; font-size: 1.3rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.contact-dialog-form input,
+.contact-dialog-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--white_a10);
+  border-radius: 12px;
+  background-color: hsla(0, 0%, 100%, .05);
+  color: var(--white);
+  font: inherit;
+  font-size: 1.5rem;
+  letter-spacing: 0;
+  text-transform: none;
+  font-weight: 400;
+  transition: var(--transition-1);
+}
+.contact-dialog-form textarea { resize: vertical; min-height: 120px; }
+.contact-dialog-form input:focus,
+.contact-dialog-form textarea:focus { outline: none; border-color: var(--white); background-color: hsla(0, 0%, 100%, .09); }
+.contact-dialog-honey { position: absolute; left: -9999px; }
+
+.contact-dialog-send {
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-block-start: 6px;
+  padding: 13px 26px;
+  border-radius: 50px;
+  background-color: var(--white);
+  color: var(--eerie-black);
+  font-size: 1.5rem;
+  font-weight: 700;
+  transition: var(--transition-1);
+}
+.contact-dialog-send:is(:hover, :focus-visible) { transform: translateY(-2px); box-shadow: 0 10px 24px hsla(0, 0%, 100%, .15); }
+.contact-dialog-send:disabled { opacity: .6; }
+
+.contact-dialog-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--white);
+  font-size: 2.2rem;
+  transition: var(--transition-1);
+}
+.contact-dialog-close:is(:hover, :focus-visible) { background-color: var(--white_a10); }
+
+.contact-dialog-status { min-height: 1.4em; font-size: 1.4rem; }
+.contact-dialog-status.ok { color: hsl(150, 70%, 70%); }
+.contact-dialog-status.err { color: hsl(345, 90%, 75%); }

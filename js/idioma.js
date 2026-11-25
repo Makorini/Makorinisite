@@ -15,7 +15,13 @@
       "btn.projects": "Ver projetos",
       "btn.cv": "Currículo",
       "btn.contact": "Entrar em contato",
-      "footer.contact": "Contato"
+      "footer.contact": "Contato",
+      "dialog.title": "Entrar em contato",
+      "dialog.text": "Escreva sua mensagem. Ela chega direto no meu e-mail.",
+      "dialog.name": "Nome",
+      "dialog.email": "Seu e-mail",
+      "dialog.message": "Mensagem",
+      "dialog.send": "Enviar"
     },
     en: {
       "title": "Makorini — Where your idea gets modern",
@@ -27,7 +33,13 @@
       "btn.projects": "See projects",
       "btn.cv": "Résumé",
       "btn.contact": "Get in touch",
-      "footer.contact": "Contact"
+      "footer.contact": "Contact",
+      "dialog.title": "Get in touch",
+      "dialog.text": "Write your message. It goes straight to my inbox.",
+      "dialog.name": "Name",
+      "dialog.email": "Your email",
+      "dialog.message": "Message",
+      "dialog.send": "Send"
     }
   };
   const cv = {
