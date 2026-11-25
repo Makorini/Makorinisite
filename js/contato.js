@@ -12,8 +12,8 @@
   if (!janela || !form) return;
 
   const msg = {
-    pt: { sending: "Enviando…", ok: "Mensagem enviada! Obrigada pelo contato ✦", err: "Não foi possível enviar agora. Escreva para makorini.dev@gmail.com." },
-    en: { sending: "Sending…", ok: "Message sent! Thank you for reaching out ✦", err: "Couldn't send right now. Please email makorini.dev@gmail.com." }
+    pt: { sending: "Enviando…", ok: "Mensagem enviada! Obrigada pelo contato ✦", err: "Não foi possível enviar agora. Escreva para makorini.dev@gmail.com.", ativacao: "O formulário ainda precisa ser ativado: a dona do site recebeu um e-mail do FormSubmit para confirmar. Enquanto isso, escreva para makorini.dev@gmail.com." },
+    en: { sending: "Sending…", ok: "Message sent! Thank you for reaching out ✦", err: "Couldn't send right now. Please email makorini.dev@gmail.com.", ativacao: "This form still needs to be activated (a confirmation email was sent to the site owner). Meanwhile, please email makorini.dev@gmail.com." }
   };
   const lang = () => (document.documentElement.lang === "en" ? "en" : "pt");
   let voltarPara = null;
@@ -56,13 +56,22 @@
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(dados)
       });
-      if (!resp.ok) throw new Error(resp.status);
+      // O FormSubmit responde 200 mesmo quando recusa (ex.: formulário ainda não ativado),
+      // então é preciso ler "success" e "message" da resposta.
+      let r = {};
+      try { r = await resp.json(); } catch (x) {}
+      if (!resp.ok || String(r.success) !== "true") {
+        const erro = new Error(r.message || String(resp.status));
+        erro.ativacao = /activat/i.test(r.message || "");
+        throw erro;
+      }
       form.reset();
       status.className = "contact-dialog-status ok";
       status.textContent = msg[lang()].ok;
     } catch (err) {
       status.className = "contact-dialog-status err";
-      status.textContent = msg[lang()].err;
+      status.textContent = err.ativacao ? msg[lang()].ativacao : msg[lang()].err;
+      console.warn("FormSubmit:", err.message);
     } finally {
       botao.disabled = false;
     }

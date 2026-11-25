@@ -162,13 +162,22 @@
                 headers: { "Content-Type": "application/json", Accept: "application/json" },
                 body: JSON.stringify(data)
             });
-            if (!resp.ok) throw new Error(resp.status);
+            // O FormSubmit responde 200 mesmo quando recusa (ex.: formulário ainda não ativado),
+            // então é preciso ler "success" e "message" da resposta.
+            let r = {};
+            try { r = await resp.json(); } catch (x) {}
+            if (!resp.ok || String(r.success) !== "true") {
+              const erro = new Error(r.message || String(resp.status));
+              erro.ativacao = /activat/i.test(r.message || "");
+              throw erro;
+            }
             form.reset();
             status.className = "form-status ok";
             status.textContent = t("form.ok");
         } catch (err) {
             status.className = "form-status err";
-            status.innerHTML = t("form.err");
+            status.innerHTML = err.ativacao ? t("form.activate") : t("form.err");
+            console.warn("FormSubmit:", err.message);
         } finally {
             btn.disabled = false;
         }
