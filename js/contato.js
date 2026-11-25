@@ -12,8 +12,8 @@
   if (!janela || !form) return;
 
   const msg = {
-    pt: { sending: "Enviando…", ok: "Mensagem enviada! Obrigada pelo contato ✦", err: "Não foi possível enviar agora. Escreva para makorini.dev@gmail.com.", abrindo: "O serviço de envio não respondeu. Abrimos seu app de e-mail com a mensagem pronta: é só enviar.", ativacao: "O formulário ainda precisa ser ativado: a dona do site recebeu um e-mail do FormSubmit para confirmar. Enquanto isso, escreva para makorini.dev@gmail.com." },
-    en: { sending: "Sending…", ok: "Message sent! Thank you for reaching out ✦", err: "Couldn't send right now. Please email makorini.dev@gmail.com.", abrindo: "The sending service did not respond. We opened your email app with the message ready: just hit send.", ativacao: "This form still needs to be activated (a confirmation email was sent to the site owner). Meanwhile, please email makorini.dev@gmail.com." }
+    pt: { sending: "Enviando… pode levar até 30 segundos.", ok: "Mensagem enviada! Obrigada pelo contato ✦", err: "Não foi possível enviar agora. Escreva para makorini.dev@gmail.com.", abrindo: "O serviço de envio não respondeu. Abrimos seu app de e-mail com a mensagem pronta: é só enviar.", ativacao: "O formulário ainda precisa ser ativado: a dona do site recebeu um e-mail do FormSubmit para confirmar. Enquanto isso, escreva para makorini.dev@gmail.com." },
+    en: { sending: "Sending… this can take up to 30 seconds.", ok: "Message sent! Thank you for reaching out ✦", err: "Couldn't send right now. Please email makorini.dev@gmail.com.", abrindo: "The sending service did not respond. We opened your email app with the message ready: just hit send.", ativacao: "This form still needs to be activated (a confirmation email was sent to the site owner). Meanwhile, please email makorini.dev@gmail.com." }
   };
   const lang = () => (document.documentElement.lang === "en" ? "en" : "pt");
   let voltarPara = null;
@@ -57,9 +57,9 @@
     status.textContent = msg[lang()].sending;
     try {
       const dados = Object.fromEntries(new FormData(form));
-      // Espera no máximo 10 segundos pelo FormSubmit.
+      // Espera até 40 segundos: o FormSubmit às vezes demora ~30 s para responder.
       const ctrl = new AbortController();
-      const limite = setTimeout(() => ctrl.abort(), 10000);
+      const limite = setTimeout(() => ctrl.abort(), 40000);
       const resp = await fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
         signal: ctrl.signal,
         method: "POST",

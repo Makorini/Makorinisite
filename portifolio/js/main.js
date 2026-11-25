@@ -164,9 +164,9 @@
         status.textContent = t("form.sending");
         try {
             const data = Object.fromEntries(new FormData(form));
-            // Espera no máximo 10 segundos pelo FormSubmit.
+            // Espera até 40 segundos: o FormSubmit às vezes demora ~30 s para responder.
             const ctrl = new AbortController();
-            const limite = setTimeout(() => ctrl.abort(), 10000);
+            const limite = setTimeout(() => ctrl.abort(), 40000);
             const resp = await fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
                 signal: ctrl.signal,
                 method: "POST",
