@@ -1,0 +1,122 @@
+/* ============================================================
+   LISTA DE PROJETOS
+   Para adicionar/editar um projeto, mexa só neste arquivo.
+
+   categorias: "web", "sistema", "ia", "academico"
+   imagem:     caminho em assets/img (ou deixe "" para um cartão estrelado)
+   links:      demo  -> página que roda no próprio GitHub Pages
+               site  -> versão publicada em outro lugar
+               video -> vídeo de demonstração (YouTube)
+               codigo-> repositório no GitHub (troque SEU-USUARIO)
+   demo:       como aparece na seção "Demonstrações"
+               { tipo: "iframe", src: "..." }  roda ao vivo
+               { tipo: "imagem", src: "...", legenda: "..." }
+               { tipo: "video",  src: "https://www.youtube-nocookie.com/embed/ID" }
+   ============================================================ */
+
+window.PROJETOS = [
+    {
+        id: "vitiexpert",
+        titulo: "VitiExpert",
+        selo: "TCC",
+        ano: "2026",
+        categorias: ["sistema", "ia", "academico"],
+        descricao: "Sistema especialista para diagnóstico de doenças em videiras com regras SE/ENTÃO e fatores de certeza, catálogo de doenças e pragas, clima e notícias. Em português, inglês e espanhol.",
+        tags: ["Python", "Flask", "Sistemas Especialistas", "JavaScript", "Pytest"],
+        imagem: "assets/img/vitiexpert.png",
+        links: { codigo: "https://github.com/SEU-USUARIO/VitiExpert" },
+        demo: { tipo: "imagem", src: "assets/img/vitiexpert-arquitetura.png", legenda: "Arquitetura do VitiExpert: interface web, motor de inferência e base de conhecimento." }
+    },
+    {
+        id: "makorini-manga",
+        titulo: "Makorini Manga",
+        selo: "Ao vivo",
+        ano: "2025",
+        categorias: ["web"],
+        descricao: "Leitor de mangás com catálogo, busca, favoritos, detalhes das obras e leitor de capítulos. Tema e progresso salvos no navegador.",
+        tags: ["HTML", "CSS", "JavaScript", "localStorage"],
+        imagem: "",
+        links: { demo: "demos/makorini-manga/", codigo: "https://github.com/SEU-USUARIO/makorini-manga" },
+        demo: { tipo: "iframe", src: "demos/makorini-manga/" }
+    },
+    {
+        id: "vitoria-beauty",
+        titulo: "Vitoria Beauty",
+        selo: "E-commerce",
+        ano: "2025",
+        categorias: ["web", "sistema"],
+        descricao: "E-commerce de cosméticos fullstack com Server Components, autenticação, carrinho e banco de dados via Prisma.",
+        tags: ["Next.js", "TypeScript", "Prisma", "Tailwind"],
+        imagem: "assets/img/vitoria-beauty.png",
+        links: { site: "https://vitoria-beauty.vercel.app/", codigo: "https://github.com/SEU-USUARIO/Makorinistore" },
+        demo: { tipo: "imagem", src: "assets/img/vitoria-beauty.png", legenda: "Página inicial da loja. A versão completa está publicada na Vercel." }
+    },
+    {
+        id: "makorini-translator",
+        titulo: "Makorini Translator",
+        selo: "IA",
+        ano: "2025",
+        categorias: ["ia", "web"],
+        descricao: "Tradutor de scans e webtoons: OCR, tradução com modelo de linguagem local, remoção de texto dos balões, editor e extensão para Chrome.",
+        tags: ["Python", "FastAPI", "EasyOCR", "Ollama", "Chrome Extension"],
+        imagem: "assets/img/translator.png",
+        links: { codigo: "https://github.com/SEU-USUARIO/makorini-translator" },
+        demo: { tipo: "imagem", src: "assets/img/translator.png", legenda: "Editor do Makorini Translator. Roda localmente com Python + Ollama." }
+    },
+    {
+        id: "makorini-biblioteca",
+        titulo: "Makorini Biblioteca",
+        selo: "Fullstack",
+        ano: "2025",
+        categorias: ["web", "sistema"],
+        descricao: "Plataforma autoral de publicação de novels, mangás, manhwas e webtoons, com catálogo público, painel da autora protegido por senha e capítulos em texto, imagens ou PDF.",
+        tags: ["Node.js", "SQLite", "JavaScript", "Autenticação"],
+        imagem: "",
+        links: { codigo: "https://github.com/SEU-USUARIO/makorini-biblioteca" }
+    },
+    {
+        id: "cinematch",
+        titulo: "CineMatch",
+        selo: "Equipe",
+        ano: "2025",
+        categorias: ["web", "academico"],
+        descricao: "Sistema de recomendação de filmes com base nos gostos do usuário: gêneros, atores, diretores e avaliações anteriores. Projeto em equipe (CineMasters).",
+        tags: ["React", "Node.js", "API REST"],
+        imagem: "",
+        links: { video: "https://youtu.be/G0Wrkv0AChA", codigo: "https://github.com/SEU-USUARIO/CineMatch" },
+        demo: { tipo: "video", src: "https://www.youtube-nocookie.com/embed/G0Wrkv0AChA" }
+    },
+    {
+        id: "recappro",
+        titulo: "RecapPro",
+        selo: "Acadêmico",
+        ano: "2024",
+        categorias: ["sistema", "academico"],
+        descricao: "App de estudos com repetição espaçada e gamificação: cursos, tarefas, pontos e loja de itens cosméticos para o perfil. Disciplina de Programação III.",
+        tags: ["PHP", "CodeIgniter", "MySQL", "MVC"],
+        imagem: "",
+        links: { codigo: "https://github.com/SEU-USUARIO/recappro" }
+    },
+    {
+        id: "gestao-salao",
+        titulo: "Gestão de Salão",
+        selo: "Cliente",
+        ano: "2025",
+        categorias: ["sistema", "web"],
+        descricao: "Sistema de gestão para salão de beleza com agendamento público, página de apresentação, localização e painel interno, sem custo de servidor.",
+        tags: ["Google Apps Script", "Google Sheets", "HTML", "CSS"],
+        imagem: "",
+        links: {}
+    },
+    {
+        id: "makorini-platform",
+        titulo: "Makorini Platform",
+        selo: "Em evolução",
+        ano: "2025",
+        categorias: ["sistema", "web"],
+        descricao: "Base de plataforma integrada com cadastro, login com Argon2id, sessões e dashboard responsivo com tema claro pastel e escuro cósmico.",
+        tags: ["Node.js", "Express", "MySQL", "Argon2"],
+        imagem: "",
+        links: { codigo: "https://github.com/SEU-USUARIO/makorini-platform" }
+    }
+];
