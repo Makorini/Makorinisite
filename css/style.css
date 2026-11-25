@@ -988,3 +988,37 @@ body.nav-active { overflow: hidden; }
   .hero .section-text { margin-block-end: 52px; }
 
 }
+/*-----------------------------------*\
+  #CONTATOS (rodapé da página inicial)
+\*-----------------------------------*/
+
+.footer-list { display: grid; gap: 10px; align-content: start; }
+.footer-link,
+.footer-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--white);
+  opacity: .8;
+  overflow-wrap: anywhere;
+  transition: var(--transition-1);
+}
+.footer-link:is(:hover, :focus-visible) { opacity: 1; text-decoration: underline; }
+.footer-link ion-icon,
+.footer-text ion-icon { font-size: 1.8rem; flex-shrink: 0; }
+
+/*-----------------------------------*\
+  #IDIOMA (PT / EN) no cabeçalho
+\*-----------------------------------*/
+
+.header-actions { display: flex; align-items: center; gap: 14px; position: relative; z-index: 3; }
+.lang-switch { display: inline-flex; border: 1px solid var(--white_a10); border-radius: 50px; overflow: hidden; }
+.lang-option {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 10px 12px; background: transparent; color: var(--white);
+  font-size: 1.3rem; font-weight: 700; letter-spacing: .06em; opacity: .65;
+  transition: var(--transition-1);
+}
+.lang-option img { width: 18px; height: 12px; object-fit: cover; }
+.lang-option:is(:hover, :focus-visible) { opacity: 1; }
+.lang-option[aria-pressed="true"] { opacity: 1; background-color: var(--white); color: var(--eerie-black); }

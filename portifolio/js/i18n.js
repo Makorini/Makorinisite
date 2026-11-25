@@ -101,7 +101,7 @@ window.I18N = {
         "about.courseTitle": "Courses",
         "about.courseText": "Node.js: Modern APIs, React &amp; React Native, HTML5, Python, AI: Neural Networks, Web System Design, Scrum &amp; PMBOK and more.",
         "about.tech": "Technologies",
-        "about.cv": "Download résumé (PDF, Portuguese) <span>↓</span>",
+        "about.cv": "Download résumé (PDF) <span>↓</span>",
         "projects.label": "Projects <span class=\"label-line\"></span>",
         "projects.title": "A constellation of work.",
         "projects.text": "Academic systems, personal projects and client work. Filter by type and open each one to see details, code or a live demo.",

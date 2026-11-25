@@ -130,6 +130,7 @@
         $$("[data-i18n-html]").forEach((el) => { el.innerHTML = t(el.dataset.i18nHtml); });
         $$("[data-i18n-aria]").forEach((el) => { el.setAttribute("aria-label", t(el.dataset.i18nAria)); });
         $$(".lang-option").forEach((b) => b.setAttribute("aria-pressed", b.dataset.lang === lang));
+        $$("[data-cv]").forEach((a) => { a.href = lang === "en" ? "assets/curriculo-bianca-maccarini-en.pdf" : "assets/curriculo-bianca-maccarini.pdf"; });
         if (mudou) {
             renderProjects(true);
             if (demoAtual) demoTexts(demoAtual);
