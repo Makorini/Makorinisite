@@ -89,7 +89,7 @@
         caption.textContent = d.legenda || "";
         if (d.tipo === "iframe") {
             view.innerHTML = `<iframe src="${esc(d.src)}" title="Demonstração: ${esc(p.titulo)}" loading="lazy"></iframe>`;
-            url.textContent = "makorini.com.br/portifolio/" + d.src;
+            url.textContent = "makorini.github.io/Makorinisite/portifolio/" + d.src;
             open.href = d.src;
         } else if (d.tipo === "video") {
             view.innerHTML = `<iframe src="${esc(d.src)}" title="Vídeo: ${esc(p.titulo)}" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
