@@ -320,7 +320,8 @@ html[data-theme="light"] .contact-form label { color: var(--muted); }
     transition: border-color .2s, box-shadow .2s;
 }
 html[data-theme="light"] .contact-form input, html[data-theme="light"] .contact-form select, html[data-theme="light"] .contact-form textarea { background: #fff; color: var(--text); }
-.contact-form select option { color: #1d1a45; }
+.contact-form select option { background: #16163a; color: #f1efff; }
+html[data-theme="light"] .contact-form select option { background: #ffffff; color: #1d1a45; }
 .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus { outline: none; border-color: #8ec5ff; box-shadow: 0 0 0 3px rgba(142, 197, 255, .25); }
 .contact-form textarea { resize: vertical; min-height: 120px; }
 .contact-form .cta { justify-self: start; }
