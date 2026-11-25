@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <!-- Metadados e identidade -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FFF8F1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#090719" media="(prefers-color-scheme: dark)">
+  <title>Makorini Books | Contos e histórias curtas</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=1">
+  <link rel="apple-touch-icon" href="assets/brand-mascot-star.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Fontes externas carregadas em paralelo (antes ficavam presas num @import do CSS). -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&family=Zen+Maru+Gothic:wght@400;500;700&family=Shippori+Mincho:wght@600&family=Literata:ital,wght@0,400;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="reader.css">
+  <!-- Temas: claro = papelaria kawaii · escuro = galáxia. Carregado por último para sobrepor os estilos antigos. -->
+  <link rel="stylesheet" href="theme.css">
+  <style>#admin-menu,#kr-offline{display:none!important}</style>
+  <!-- Ordem importa: core → catalog → admin → reader → main. -->
+  <script defer src="js/core.js"></script>
+  <script defer src="js/catalog.js"></script>
+  <script defer src="js/admin.js"></script>
+  <script defer src="js/accounts.js"></script>
+  <script defer src="js/reader.js"></script>
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  <!-- Navegação pública e entrada da administração -->
+  <header>
+    <a class="brand" href="#inicio">
+      <img class="brand-avatar" src="assets/brand-mascot-star.png" alt="" aria-hidden="true">
+      <span class="brand-copy">
+        <span class="brand-line"><span class="brand-script">Makorini</span><span class="brand-sub">Books</span></span>
+        <small>ONDE CADA HISTÓRIA ENCONTRA SEU LEITOR</small>
+      </span>
+    </a>
+    <nav id="navigation" aria-label="Navegação principal"><a href="#inicio">Explorar</a><a href="#categorias">Gêneros</a><a href="#favoritos">Minha estante</a></nav>
+    <form id="header-search" class="header-search" role="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><input id="header-q" type="search" placeholder="Buscar história, autora, tag…" aria-label="Buscar no catálogo" maxlength="100"></form>
+    <details id="notif" class="notif"><summary class="icon" aria-label="Novidades" title="Novidades dos seus favoritos"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M10 20a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><b id="notif-count" class="notif-count" hidden></b></summary><div id="notif-list" class="notif-list"></div></details>
+    <details id="admin-menu" class="admin-menu" hidden><summary aria-label="Minha conta" title="Minha conta"><svg class="avatar-bunny" viewBox="0 0 40 40" aria-hidden="true"><path d="M13 16C10 8 11 2 14 2s4 7 3 14M27 16c3-8 2-14-1-14s-4 7-3 14" fill="#FFF8F0" stroke="#E7C9B0" stroke-width="1.4"/><path d="M14.5 13c-1-5-.5-8 .5-8M25.5 13c1-5 .5-8-.5-8" stroke="#F7B9C9" stroke-width="2" stroke-linecap="round"/><circle cx="20" cy="25" r="12" fill="#FFF8F0" stroke="#E7C9B0" stroke-width="1.4"/><circle cx="15.5" cy="25" r="1.4" fill="#3E2E3B"/><circle cx="24.5" cy="25" r="1.4" fill="#3E2E3B"/><ellipse cx="13" cy="28.5" rx="2.2" ry="1.3" fill="#F7B9C9"/><ellipse cx="27" cy="28.5" rx="2.2" ry="1.3" fill="#F7B9C9"/><path d="M18.5 28q1.5 1.4 3 0" fill="none" stroke="#3E2E3B" stroke-width="1.1" stroke-linecap="round"/></svg><svg class="avatar-star" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="17" fill="#0B0A22"/><path d="M20 7l3.4 8.6 9.1.7-7 5.9 2.2 8.9L20 26.3l-7.7 4.8 2.2-8.9-7-5.9 9.1-.7z" fill="#F6E7B4"/></svg><span id="account-label" class="account-label">Entrar</span></summary><div id="admin-links" class="admin-menu-links"><a href="#entrar">Área da administradora</a></div></details>
+    <button id="theme" class="icon" type="button" aria-label="Alternar tema" title="Alternar tema claro/escuro"><svg class="ico-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><svg class="ico-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+  </header>
+  <!-- O JavaScript renderiza o catálogo, a leitura e o painel -->
+  <main id="app"><p>Carregando Makorini Books…</p></main>
+  <!-- Rodapé com páginas públicas -->
+  <footer class="public-footer">
+    <p><small>© 2026 Makorini Books</small></p>
+    <div class="footer-links">
+      <a href="#sobre">Sobre nós</a>
+      <a href="#privacidade">Política de Privacidade</a>
+      <a href="#termos">Termos de Uso</a>
+      <a href="#contato">Contato</a>
+    </div>
+  </footer>
+  <!-- Acessibilidade e avisos -->
+  <div class="scroll-controls" role="group" aria-label="Navegação vertical da página"><button id="scroll-top" type="button" aria-label="Voltar ao topo da página" title="Voltar ao topo">↑</button><button id="scroll-bottom" type="button" aria-label="Ir ao final da página" title="Ir ao final">↓</button></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

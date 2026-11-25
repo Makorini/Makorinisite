@@ -1,0 +1,161 @@
+/* ===== Leitor estilo e-reader (public/js/reader.js) ===== */
+.kreader{--kr-bg:var(--paper);--kr-ink:var(--ink);--kr-muted:var(--muted);--kr-line:var(--line);--kr-accent:var(--pink);--kr-mark:rgba(255,214,90,.55);
+ --kr-font:'Literata',Georgia,serif;--kr-size:19px;--kr-line-h:1.7;--kr-margin:44px;--kr-width:720px;
+ max-width:none;margin:8px auto 0;background:var(--kr-bg);color:var(--kr-ink);border:1px solid var(--kr-line);border-radius:18px;overflow:hidden;position:relative}
+.kreader.kr-theme-light{--kr-bg:#fdfcf9;--kr-ink:#1f1d1a;--kr-muted:#6f6a60;--kr-line:#e4e0d6;--kr-accent:#6548ae}
+.kreader.kr-theme-sepia{--kr-bg:#f4ecd8;--kr-ink:#4a3a28;--kr-muted:#8a755a;--kr-line:#e0d2b4;--kr-accent:#9a5b2c;--kr-mark:rgba(214,160,60,.4)}
+.kreader.kr-theme-dark{--kr-bg:#121316;--kr-ink:#d9d4c7;--kr-muted:#8e8a80;--kr-line:#2a2c33;--kr-accent:#b2afff;--kr-mark:rgba(160,130,30,.5)}
+.dark .kreader:not([class*=kr-theme-]){--kr-mark:rgba(160,130,30,.5)}
+
+/* Barra superior */
+.kr-top{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--kr-line)}
+.kr-back{font-size:13px;color:var(--kr-muted);white-space:nowrap;max-width:28%;overflow:hidden;text-overflow:ellipsis}
+.kr-title{flex:1;min-width:0;text-align:center;display:grid}
+.kr-title b{font:600 15px 'DM Sans',sans-serif}
+.kr-title small{font-size:12px;color:var(--kr-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kr-tools{display:flex;gap:2px;flex-wrap:wrap;justify-content:flex-end}
+.kr-tool{background:transparent;border:1px solid transparent;color:var(--kr-ink);border-radius:8px;min-width:36px;height:36px;padding:0 8px;font-size:16px;line-height:1}
+.kr-tool:hover,.kr-tool.active{background:color-mix(in srgb,var(--kr-accent) 14%,transparent);border-color:color-mix(in srgb,var(--kr-accent) 30%,transparent)}
+
+/* Painel lateral */
+.kr-panel{position:absolute;top:57px;right:0;bottom:0;width:min(380px,100%);z-index:6;background:var(--kr-bg);border-left:1px solid var(--kr-line);box-shadow:-12px 0 30px rgba(0,0,0,.12);padding:14px 18px 24px;overflow:auto;font:14px 'DM Sans',sans-serif}
+.kr-panel-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.kr-panel-head h2{font:600 17px 'DM Sans',sans-serif;margin:0}
+.kr-hint{font-size:12px;color:var(--kr-muted);line-height:1.7;margin:8px 0}
+.kr-toc{list-style:none;margin:0;padding:0}
+.kr-toc a{display:flex;justify-content:space-between;gap:10px;padding:9px 10px;border-radius:8px}
+.kr-toc a:hover{background:color-mix(in srgb,var(--kr-accent) 10%,transparent)}
+.kr-toc .current a{background:color-mix(in srgb,var(--kr-accent) 18%,transparent);font-weight:600}
+.kr-toc small{color:var(--kr-accent)}
+.kr-search-form{display:flex;gap:8px;grid-template-columns:none}
+.kr-search-form input{flex:1;min-width:0}
+.kr-results{display:grid;gap:6px;margin-top:10px}
+.kr-result{display:grid;gap:3px;text-align:left;background:transparent;border:1px solid var(--kr-line);border-radius:8px;padding:9px 10px;color:var(--kr-ink);font:13px/1.5 'DM Sans',sans-serif}
+.kr-result mark,.kr-hit{background:var(--kr-mark);color:inherit;border-radius:2px}
+.kr-notes{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.kr-notes li{display:flex;gap:4px;align-items:flex-start;border:1px solid var(--kr-line);border-radius:10px;padding:6px}
+.kr-notes li.kr-flash{outline:2px solid var(--kr-accent)}
+.kr-note-go{flex:1;display:grid;gap:4px;text-align:left;background:transparent;border:0;color:var(--kr-ink);padding:4px;font:13px/1.5 'DM Sans',sans-serif}
+.kr-note-go small{color:var(--kr-muted)}
+.kr-note-go q{font-family:var(--kr-font);font-style:italic}
+.kr-note-text{color:var(--kr-accent)}
+.kr-setting{display:grid;gap:8px;margin:0 0 16px}
+.kr-setting>span{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--kr-muted);display:flex;justify-content:space-between}
+.kr-setting input[type=range]{width:100%;accent-color:var(--kr-accent);margin:0}
+.kr-choices{display:flex;flex-wrap:wrap;gap:6px}
+.kr-choice{border:1px solid var(--kr-line);background:transparent;color:var(--kr-ink);border-radius:999px;padding:7px 12px;font-size:13px}
+.kr-choice.active{border-color:var(--kr-accent);background:color-mix(in srgb,var(--kr-accent) 16%,transparent);font-weight:600}
+
+/* Corpo */
+.kr-body{position:relative;min-height:50vh}
+.kr-flow,.kr-flow-static{font-family:var(--kr-font);font-size:var(--kr-size);line-height:var(--kr-line-h);white-space:pre-wrap;overflow-wrap:anywhere;hyphens:auto;text-align:justify;color:var(--kr-ink)}
+.kr-flow-static{padding:16px 0}
+.kr-hl{background:var(--kr-mark);color:inherit;border-radius:2px;cursor:pointer}
+
+/* Texto em páginas: colunas CSS dentro de uma janela de altura fixa */
+.kr-text.kr-paged{position:relative}
+.kr-paged .kr-viewport{height:calc(100vh - 190px);max-width:calc(var(--kr-width) + 2*var(--kr-margin));margin:0 auto;padding:28px var(--kr-margin);overflow:hidden}
+.kr-paged .kr-flow{height:100%;column-fill:auto;transition:transform .28s ease}
+@media(prefers-reduced-motion:reduce){.kr-paged .kr-flow{transition:none}}
+.kr-scroll .kr-viewport{max-width:calc(var(--kr-width) + 2*var(--kr-margin));margin:0 auto;padding:32px var(--kr-margin) 60px}
+.kr-zone{position:absolute;top:0;bottom:0;width:14%;background:transparent;border:0;z-index:2;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.kr-zone-prev{left:0;cursor:w-resize}
+.kr-zone-next{right:0;cursor:e-resize}
+.kr-zone:focus-visible{outline:2px solid var(--kr-accent);outline-offset:-4px}
+
+/* Imagens */
+.kr-strip{max-width:var(--kr-width);margin:0 auto;overflow-anchor:auto}
+.kr-strip img{display:block;width:100%;height:auto;min-height:40px}
+.kr-pageview{position:relative;background:#0b0b0d}
+.kr-pageframe{height:calc(100vh - 175px);display:flex;align-items:center;justify-content:center;overflow:hidden;touch-action:pinch-zoom}
+.kr-pageframe img{max-width:100%;max-height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}
+.kr-pageframe.kr-zoomed{overflow:auto;display:block;cursor:zoom-out}
+.kr-pageframe.kr-zoomed img{max-width:none;max-height:none;width:200%}
+.kr-pageview .kr-zone{width:30%}
+.kr-image-hint{text-align:center;padding:0 12px;margin:6px 0}
+.kr-intro{margin:12px var(--kr-margin);font-size:14px}
+.kr-intro summary{cursor:pointer;color:var(--kr-accent)}
+
+/* PDF */
+.kr-pdf-bar{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;padding:10px;border-bottom:1px solid var(--kr-line)}
+.kr-pdf-bar .btn{padding:7px 12px}
+.kr-pdf-page{position:relative;display:flex;justify-content:center;align-items:flex-start;padding:14px;overflow:auto;background:color-mix(in srgb,var(--kr-ink) 6%,var(--kr-bg))}
+.kr-pdf-page.kr-zoomed{justify-content:flex-start}
+.kr-pdf-page.kr-zoomed .kr-zone{display:none}
+.kr-pdf-page canvas{box-shadow:0 8px 28px rgba(0,0,0,.2);background:#fff;max-width:none}
+.kr-pdf-frame{width:100%;height:80vh;border:0;background:#fff}
+
+/* Rodapé com progresso */
+.kr-foot{border-top:1px solid var(--kr-line);font:12px 'DM Sans',sans-serif}
+.kr-progress{height:3px;background:var(--kr-line)}
+.kr-progress span{display:block;height:100%;width:0;background:var(--kr-accent);transition:width .2s}
+.kr-foot-row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px}
+.kr-status{color:var(--kr-muted);text-align:center;flex:1}
+.kr-chapter-link{color:var(--kr-accent);font-weight:600;white-space:nowrap}
+.kr-scroll~.kr-foot,.kreader:has(.kr-scroll) .kr-foot{position:sticky;bottom:0;background:var(--kr-bg);z-index:3}
+
+/* Pop-up de grifo */
+.kr-selection{position:fixed;z-index:50;display:flex;gap:4px;padding:4px;background:#1d1f2b;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.kr-selection button{background:transparent;color:#fff;border:0;padding:8px 10px;border-radius:6px;font:600 13px 'DM Sans',sans-serif}
+.kr-selection button:hover{background:rgba(255,255,255,.12)}
+
+/* Modo foco: só o livro na tela */
+body.reading main{padding-top:12px}
+body.reading-focus header,body.reading-focus footer,body.reading-focus .scroll-controls,body.reading-focus .reader-admin-link{display:none!important}
+body.reading-focus main{padding:0;max-width:none}
+body.reading-focus .kreader{margin:0;border-radius:0;border:0;max-width:none;min-height:100vh}
+body.reading-focus .kr-paged .kr-viewport{height:calc(100vh - 110px)}
+body.reading-focus .kr-pageframe{height:calc(100vh - 100px)}
+/* Setas ↑↓: escondidas durante a leitura; aparecem ao tocar na tela */
+body.reading .scroll-controls{opacity:0;pointer-events:none;transition:opacity .2s}
+body.reading.reading-controls .scroll-controls{opacity:1;pointer-events:auto}
+/* No computador (mouse) as setas ficam sempre visíveis; só em telas de toque elas aparecem ao tocar. */
+@media (hover:hover) and (pointer:fine){body.reading .scroll-controls{opacity:1;pointer-events:auto}}
+body.reading{overflow-x:clip}
+.kr-strip.kr-fit-screen{max-width:none}
+
+@media(max-width:680px){
+ .kreader{border-radius:0;border-left:0;border-right:0;margin:0 calc(-1 * var(--page-pad,16px))}
+ .kr-top{flex-wrap:wrap;padding:8px 10px}
+ .kr-back{max-width:45%}
+ .kr-title{order:-1;flex-basis:100%;text-align:left}
+ .kr-tools{flex:1}
+ .kr-tool{min-width:34px;height:34px;padding:0 6px}
+ .kr-panel{top:0;position:fixed;width:100%;border-left:0}
+ .kr-paged .kr-viewport{height:calc(100vh - 210px)}
+ .kr-flow{text-align:left}
+}
+/* Celular: barra do leitor alinhada — título em cima; voltar + ferramentas numa linha só */
+@media(max-width:680px){
+ .kr-top{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:6px 8px;padding:10px 12px}
+ .kr-title{grid-column:1/-1;grid-row:1}
+ .kr-back{grid-column:1;grid-row:2;max-width:none;min-width:0}
+ .kr-tools{grid-column:2;grid-row:2;flex-wrap:nowrap;gap:0;flex:none}
+ .kr-tool{min-width:32px;width:32px;height:32px;padding:0;font-size:15px;display:inline-grid;place-items:center}
+ .kr-panel{top:0}
+ /* lendo no celular: busca do topo some para sobrar tela */
+ body.reading header .header-search{display:none}
+}
+@media(max-width:360px){.kr-tool{min-width:29px;width:29px}}
+/* Tablet: painel do leitor por cima (não esmaga as páginas) e barra alinhada */
+@media(min-width:681px) and (max-width:1100px){
+ .kr-panel{width:min(400px,60%);box-shadow:-18px 0 40px rgba(0,0,0,.18)}
+ .kr-top{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center}
+ .kr-back{max-width:none;min-width:0}
+ .kr-tools{flex-wrap:nowrap;justify-self:end}
+ .kr-pageframe{height:calc(100vh - 230px)}
+ .kr-paged .kr-viewport{height:calc(100vh - 240px)}
+ body.reading header .header-search{display:none}
+ body.reading header{grid-template-areas:"brand nav notif account theme"!important;grid-template-columns:auto minmax(0,1fr) auto auto auto!important}
+ body.reading header nav{justify-content:center}
+}
+@media(min-width:681px) and (max-width:1100px){html body.reading header{grid-template-areas:"brand . notif account theme" "nav nav nav nav nav"!important}html body.reading header nav{justify-content:flex-start}}
+@media(min-width:681px) and (max-width:760px){html body.reading header{grid-template-columns:minmax(0,1fr) auto auto auto!important;grid-template-areas:"brand notif account theme" "nav nav nav nav"!important}}
+/* Telas pequenas: o painel do leitor (sumário, busca, notas, aparência) é um <aside>,
+   e uma regra antiga escondia todo <aside> no celular. Aqui ele volta a aparecer. */
+html body .kreader .kr-panel:not([hidden]){display:block!important}
+@media(max-width:680px){
+ html body .kreader .kr-panel{position:fixed;inset:0;width:100%;height:100dvh;z-index:60;border:0;padding:16px 18px 32px}
+ /* setas ↑↓ acima do rodapé do leitor para não cobrir o "Cap. →" */
+ body.reading .scroll-controls{bottom:64px!important}
+}

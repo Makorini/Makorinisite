@@ -28,16 +28,16 @@ window.PROJETOS = [
         demo: { tipo: "imagem", src: "assets/img/vitiexpert-arquitetura.png", legenda: "Arquitetura do VitiExpert: interface web, motor de inferência e base de conhecimento." }
     },
     {
-        id: "makorini-manga",
-        titulo: "Makorini Manga",
+        id: "makorini-books",
+        titulo: "Makorini Books",
         selo: "Ao vivo",
-        ano: "2025",
+        ano: "2026",
         categorias: ["web"],
-        descricao: "Leitor de mangás com catálogo, busca, favoritos, detalhes das obras e leitor de capítulos. Tema e progresso salvos no navegador.",
-        tags: ["HTML", "CSS", "JavaScript", "localStorage"],
+        descricao: "Leitor de contos e histórias curtas: catálogo com busca e gêneros, estante de favoritos, leitor estilo Kindle com sumário, busca no livro, marcadores e temas claro e escuro. Versão estática do front do Makorini Stories.",
+        tags: ["HTML", "CSS", "JavaScript", "Node.js (versão completa)", "SQLite"],
         imagem: "",
-        links: { demo: "demos/makorini-manga/", codigo: "https://github.com/SEU-USUARIO/makorini-manga" },
-        demo: { tipo: "iframe", src: "demos/makorini-manga/" }
+        links: { demo: "demos/makorini-books/" },
+        demo: { tipo: "iframe", src: "demos/makorini-books/" }
     },
     {
         id: "vitoria-beauty",
@@ -99,14 +99,14 @@ window.PROJETOS = [
     },
     {
         id: "gestao-salao",
-        titulo: "Gestão de Salão",
+        titulo: "Bella Salon",
         selo: "Cliente",
         ano: "2025",
         categorias: ["sistema", "web"],
-        descricao: "Sistema de gestão para salão de beleza com agendamento público, página de apresentação, localização e painel interno, sem custo de servidor.",
+        descricao: "Sistema de gestão para o salão Bella Salon com agendamento público, página de apresentação, localização e painel interno, sem custo de servidor.",
         tags: ["Google Apps Script", "Google Sheets", "HTML", "CSS"],
         imagem: "",
-        links: {}
+        links: { site: "https://script.google.com/macros/s/AKfycbwbTrMEKG1gZw4V8BJuZ4YY0OnjuIDKIDDV_JdqSItHBNS2A0iUz9VR9yGUUb2RU5Ag/exec?pagina=publico" }
     },
     {
         id: "makorini-platform",

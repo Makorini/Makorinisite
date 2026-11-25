@@ -1,0 +1,702 @@
+/* =====================================================================
+   Makorini Stories · Temas
+   - Claro  = "papelaria kawaii": creme, pastéis, adesivos, pesponto.
+   - Escuro = "galáxia": céu profundo, poeira estelar, detalhes lilás e dourado.
+   Carregado por último (depois de style.css e reader.css) para sobrepor
+   os estilos antigos sem apagá-los. O seletor "html body" dá prioridade.
+   ===================================================================== */
+
+/* ---------- Tokens do tema claro (kawaii) ---------- */
+:root{
+ --bg:#FFF8F1;--paper:#FFFFFF;--ink:#4A3646;--muted:#7A6475;--line:#F3D7E0;--wash:#FDEFF3;--head:#FFFFFF;
+ --pink:#B83B66;            /* destaque (botões, links fortes) — contraste AA com branco */
+ --accent:#B83B66;--accent-ink:#FFFFFF;--accent-deep:#84264A;
+ --rose:#F28FAB;--rose-soft:#FDE3EA;--stitch:#F3C3CF;
+ --mint:#BFE7D6;--mint-ink:#2E6A58;--butter:#FFF1C9;--butter-ink:#6A4A12;
+ --lilac:#E6DCF7;--lilac-ink:#4E3D86;--sky:#DCEAF8;--sky-ink:#2F5B85;--peach:#FFE3D3;
+ --font-display:'Mochiy Pop One','Zen Maru Gothic',sans-serif;
+ --font-body:'Zen Maru Gothic','Segoe UI',sans-serif;
+ --font-title:'Mochiy Pop One','Zen Maru Gothic',sans-serif;
+ --radius:22px;--card-shadow:0 5px 0 var(--stitch);
+}
+
+/* ---------- Base ---------- */
+html body{background-color:var(--bg);background-image:radial-gradient(#F3D9CD 1.1px,transparent 1.2px);background-size:22px 22px;color:var(--ink);font:15px/1.6 var(--font-body)}
+html body button,html body input,html body select,html body textarea{font-family:var(--font-body)}
+/* A imagem de fundo original do Makorini (nuvens azul e roxa) continua na página inicial, nos dois temas (regra body.home::before em style.css). */
+html body h1,html body h2,html body h3,html body .intro h1,html body .guide h1,html body .detail h1,html body .institutional h1{font-family:var(--font-title);font-weight:400;letter-spacing:.2px}
+html body ::selection{background:#FBD0DC;color:#4A3646}
+html body a{color:inherit}
+html body .hint{color:var(--muted)}
+html body button:focus-visible,html body a:focus-visible,html body input:focus-visible,html body select:focus-visible{outline:3px solid #F28FAB;outline-offset:3px}
+
+/* ---------- Cabeçalho ---------- */
+html body header{background:#FFFFFF!important;color:var(--ink)!important;box-shadow:none!important;border-bottom:2px dashed var(--stitch)!important;min-height:auto}
+/* O logo mantém a fonte própria do Makorini (Karmatic Arcade, assets/fonts/ka1.ttf); só as cores mudam por tema. */
+html body header .brand-script{color:var(--ink)!important}
+html body header .brand-sub{color:#D9557F!important;margin-left:6px}
+html body header .brand small{color:var(--muted)!important;letter-spacing:2px;font-size:9px}
+html body header nav a{color:var(--ink)!important;padding:9px 16px;border-radius:999px;font-weight:700;font-size:14px;opacity:1}
+html body header nav a:hover{background:var(--rose-soft)}
+html body header .icon,html body header .admin-menu summary{width:44px;height:44px;border-radius:50%!important;border:2px solid #F6D3DC!important;background:#FFFFFF!important;color:#8E2A4D!important;display:grid;place-items:center;font-size:18px}
+html body header .admin-menu-links{background:#FFFFFF!important;border:2px solid #F6D3DC!important;border-radius:18px!important;box-shadow:0 6px 0 var(--stitch)!important}
+html body header .admin-menu-links a{color:var(--ink)!important;border-radius:12px}
+html body header .admin-menu-links a:hover{background:var(--rose-soft)!important}
+html body .menu-user{color:#A8325C}
+
+/* ---------- Botões ---------- */
+html body .btn{background:var(--accent)!important;border:2px solid var(--accent)!important;color:var(--accent-ink)!important;border-radius:999px!important;padding:11px 22px;font-size:14px;font-weight:700;box-shadow:0 4px 0 var(--accent-deep);transition:transform .12s,box-shadow .12s}
+html body .btn:hover{transform:translateY(-1px)}
+html body .btn:active{transform:translateY(3px);box-shadow:0 1px 0 var(--accent-deep)}
+html body .btn.secondary{background:#FFFFFF!important;color:#8E2A4D!important;border-color:#F3B5C5!important;box-shadow:0 3px 0 var(--stitch)}
+html body .btn.danger,html body .btn.secondary.danger{color:#B52957!important;border-color:#E9A3B8!important}
+html body button:disabled{opacity:.5}
+
+/* ---------- Campos ---------- */
+html body input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]),html body select,html body textarea{background:#FFFCFA!important;border:2px solid #F3D7E0!important;border-radius:14px!important;color:var(--ink)!important}
+html body .toolbar select,html body .toolbar input{border-radius:999px!important}
+html body input[type=range]{accent-color:var(--rose)}
+html body input[type=checkbox],html body input[type=radio]{accent-color:var(--accent)}
+
+/* ---------- Painéis e cartões genéricos ---------- */
+html body .form-panel,html body .admin-row,html body .error-box,html body .guide article,html body .institutional,html body .stats>div,html body .genre-entry,html body .rating-panel{background:#FFFFFF!important;border:2px solid #F6E0E7!important;border-radius:var(--radius)!important}
+html body .form-panel{box-shadow:var(--card-shadow)}
+html body .stats b{font-family:var(--font-display);color:#A8325C}
+html body .notice{background:var(--butter)!important;border-left:0!important;border-radius:14px;color:var(--butter-ink)}
+html body .pill,html body .status-pill{border-radius:999px;border:2px solid #F3D7E0;background:#FFFFFF;color:var(--muted)}
+html body .eyebrow{color:#A8325C;letter-spacing:2px}
+
+/* ---------- Página inicial: área do catálogo ---------- */
+html body.home .layout{background:#FFFFFF!important;border:2px solid #F6E0E7!important;border-radius:28px!important;box-shadow:0 0 0 8px #FFFFFF,0 0 0 10px var(--stitch)}
+html body .section-title h2{font-family:var(--font-title);font-weight:400}
+html body .section-title .dot{background:var(--rose)!important}
+
+/* Chips de gênero: cada um com uma cor pastel (borda + texto) */
+html body .chip{border:2px solid #F3C3CF!important;background:#FFFFFF!important;color:#8E2A4D!important;font-weight:700;font-size:13px!important;padding:7px 15px!important;border-radius:999px!important}
+html body #genre-chips .chip:nth-child(5n+2){border-color:#BFE0D2!important;color:var(--mint-ink)!important}
+html body #genre-chips .chip:nth-child(5n+3){border-color:#CFC2EE!important;color:var(--lilac-ink)!important}
+html body #genre-chips .chip:nth-child(5n+4){border-color:#F4D79A!important;color:#7A5A1E!important}
+html body #genre-chips .chip:nth-child(5n+5){border-color:#C7DDF3!important;color:var(--sky-ink)!important}
+html body .chip.active{background:var(--accent)!important;border-color:var(--accent)!important;color:#FFFFFF!important}
+
+/* Cards de obra: capa como adesivo (moldura branca, sombra pastel, levemente torta) */
+html body .modern-card .cover,html body .card .cover{border:5px solid #FFFFFF;border-radius:18px!important;box-shadow:0 5px 0 var(--stitch);transition:transform .18s}
+html body .grid>article:nth-child(4n+1) .cover{transform:rotate(-1.4deg);box-shadow:0 5px 0 #CFC2EE}
+html body .grid>article:nth-child(4n+2) .cover{transform:rotate(1deg);box-shadow:0 5px 0 #BFE0D2}
+html body .grid>article:nth-child(4n+3) .cover{transform:rotate(-.6deg);box-shadow:0 5px 0 #F3C3CF}
+html body .grid>article:nth-child(4n+4) .cover{transform:rotate(1.3deg);box-shadow:0 5px 0 #F4D79A}
+html body .grid>article .cover-link:hover .cover{transform:rotate(0) translateY(-3px)}
+html body .modern-card h3,html body .card h3{font-family:var(--font-body);font-weight:700;color:var(--ink)}
+html body .cover .badge{background:#FFFFFF!important;color:#8E2A4D!important;border:2px solid #F3C3CF;border-radius:999px!important;font-weight:700;letter-spacing:.5px;transform:rotate(-4deg)}
+html body .cover-new,html body .chapter-new{background:#FFFFFF!important;color:#B83B66!important;border:2px solid #F28FAB;border-radius:999px!important;font-weight:700;transform:rotate(-6deg);box-shadow:0 2px 0 #F3C3CF}
+html body .favorite-heart{background:#FFFFFF!important;color:#D9557F!important;border:2px solid #F6D3DC!important;box-shadow:0 2px 0 var(--stitch)}
+html body .favorite-heart.active{background:#FDE3EA!important}
+html body .chapter-link{border:2px dashed #F3D7E0!important;border-radius:12px!important;background:#FFFFFF!important;color:var(--ink)!important}
+html body .compact-rating span{color:#E8A93A}
+html body .pagination button{border-radius:999px;border:2px solid #F3D7E0;background:#FFFFFF;color:var(--ink)}
+html body .pagination button[aria-current]{background:var(--accent);color:#FFFFFF;border-color:var(--accent)}
+
+/* Destaques (carrossel) */
+html body .feature-spot{background:#FFFFFF;border-radius:28px!important;box-shadow:0 0 0 2px #F6D3DC,0 0 0 8px #FFFFFF,0 0 0 10px var(--stitch)!important;border:0!important}
+html body .feature-spot::before,html body .feature-spot::after{display:none}
+html body .feature-copy,html body .feature-copy .feature-meta,html body .feature-synopsis{color:var(--ink)!important}
+html body .feature-copy .feature-meta,html body .feature-synopsis{color:var(--muted)!important}
+html body .feature-copy h2{font-family:var(--font-title)!important;font-weight:400}
+html body .feature-cover{border:5px solid #FFFFFF;box-shadow:0 7px 0 var(--stitch)!important;transform:rotate(-2deg)}
+html body .feature-cover img{background:var(--wash)!important}
+html body .featured-heading h2{font-family:var(--font-title);font-weight:400}
+html body .feature-dot{background:#F3C3CF!important}
+html body .feature-dot.active{background:var(--accent)!important}
+html body .featured-controls button{border:2px solid #F3C3CF!important;background:#FFFFFF!important;color:#8E2A4D!important}
+
+/* Ranking */
+html body .top-ranking{background:#FFFFFF;border:2px dashed #CFC2EE;border-radius:24px;padding:20px 18px!important}
+html body .top-ranking h3{font-family:var(--font-title);font-weight:400;color:var(--lilac-ink)}
+html body .top-ranking .rank{border-bottom:0!important}
+html body .top-ranking .rank>b{font:16px var(--font-display)!important;min-width:34px!important;height:34px;border-radius:10px;display:grid;place-items:center;color:var(--ink)!important;background:var(--lilac)}
+html body .top-ranking .rank:nth-of-type(1)>b{background:#FFD66B}
+html body .top-ranking .rank:nth-of-type(2)>b{background:#FBD0DC}
+html body .top-ranking .rank:nth-of-type(3)>b{background:#CFE9DE}
+html body .top-ranking .rank small{color:var(--muted)!important}
+
+/* ---------- Página da obra ---------- */
+html body .detail .cover{border:6px solid #FFFFFF;border-radius:18px!important;box-shadow:0 8px 0 var(--stitch);transform:rotate(-2deg);overflow:visible!important}
+html body .detail .cover img{border-radius:12px}
+html body .chapters a{background:#FFFFFF!important;border:2px dashed #F3D7E0!important;border-radius:16px!important;margin-bottom:10px;color:var(--ink)!important}
+html body .chapters a:hover{border-color:#F28FAB!important;background:#FFF7F9!important}
+html body .genre-tags .chip{transform:none}
+html body .rating-star{color:#F3D7E0}
+html body .rating-star.selected,html body .rating-star:hover{color:#FFC94D}
+html body .rating-fill{color:#FFC94D}
+
+/* Páginas de gênero */
+html body .genre-card{background:#FFFFFF!important;border:2px solid #F6E0E7!important;border-radius:24px!important;box-shadow:0 5px 0 var(--stitch);color:var(--ink)!important}
+html body .genre-card:nth-child(4n+2){box-shadow:0 5px 0 #BFE0D2}
+html body .genre-card:nth-child(4n+3){box-shadow:0 5px 0 #CFC2EE}
+html body .genre-card:nth-child(4n+4){box-shadow:0 5px 0 #F4D79A}
+html body .genre-card h2{font-family:var(--font-title);font-weight:400}
+
+/* ---------- Rodapé, avisos, setas ---------- */
+html body footer{background:#FFFFFF;border-top:2px dashed var(--stitch)!important;color:var(--muted)}
+html body footer a{color:#A8325C!important}
+html body #toast{background:#4A3646!important;color:#FFFFFF!important;border-radius:999px!important;box-shadow:0 4px 0 #2E2030}
+html body .scroll-controls button{background:#FFFFFF!important;color:#8E2A4D!important;border:2px solid #F3C3CF!important;box-shadow:0 3px 0 var(--stitch)}
+html body .adult-badge{background:#D4203B!important;border:2px solid #FFFFFF}
+
+/* ---------- Mascotes (SVG inline gerado em js/core.js) ---------- */
+.mascot{display:block;margin:0 auto 10px;width:120px;height:auto}
+.mascot-peek{position:absolute;right:16px;bottom:-4px;width:110px;pointer-events:none}
+.empty .mascot,.error-box .mascot{width:110px}
+.auth-page .mascot{margin:0 0 8px}
+
+/* ---------- "Continuar lendo" na página inicial ---------- */
+.continue-card{position:relative;display:flex;gap:24px;align-items:center;flex-wrap:wrap;background:#FFFFFF;border-radius:28px;padding:26px 150px 26px 26px;margin:6px 0 30px;box-shadow:0 0 0 2px #F6D3DC,0 0 0 8px #FFFFFF,0 0 0 10px var(--stitch)}
+.continue-card .continue-label{position:absolute;top:-14px;left:32px;background:var(--mint);color:var(--mint-ink);font-weight:700;font-size:13px;padding:5px 14px;border-radius:6px;transform:rotate(-3deg);box-shadow:0 2px 0 #9CCDB8}
+.continue-card .continue-cover{width:110px;aspect-ratio:2/3;border-radius:14px;border:4px solid #FFFFFF;box-shadow:0 5px 0 var(--stitch);transform:rotate(-2deg);overflow:hidden;flex:0 0 auto;background:var(--wash)}
+.continue-card .continue-cover img{width:100%;height:100%;object-fit:cover;display:block}
+.continue-card h2{margin:0 0 4px;font-size:26px;line-height:1.2}
+.continue-card p{margin:0 0 10px;color:var(--muted)}
+.continue-card .continue-info{flex:1 1 260px;min-width:0}
+.continue-progress{display:flex;align-items:center;gap:10px;margin:4px 0 14px}
+.continue-progress .track{flex:1;height:12px;background:#FCEAF0;border-radius:999px;position:relative}
+.continue-progress .fill{height:100%;background:var(--rose);border-radius:999px}
+.continue-progress .flower{position:absolute;top:-7px;width:26px;height:26px;margin-left:-13px}
+.continue-progress b{color:#A8325C;font-size:14px}
+@media(max-width:680px){.continue-card{padding:22px}.continue-card .mascot-peek{display:none}}
+
+/* =====================================================================
+   TEMA ESCURO · GALÁXIA E POEIRA ESTELAR
+   ===================================================================== */
+html body.dark{
+ --bg:#090719;--paper:rgba(22,17,52,.86);--ink:#EDE8FF;--muted:#B9AEE0;--line:rgba(190,170,255,.22);--wash:rgba(201,182,255,.10);--head:rgba(9,7,25,.6);
+ --pink:#FFD27A;--accent:#FFD27A;--accent-ink:#2A1E00;--accent-deep:#B8902E;--rose:#FF8CC6;--rose-soft:rgba(255,140,198,.14);--stitch:rgba(190,170,255,.28);
+ --font-title:'Shippori Mincho','Literata',serif;--card-shadow:none;
+ background-color:#090719;
+ background-image:
+  radial-gradient(ellipse 620px 360px at 12% 6%,rgba(156,76,255,.28),transparent 70%),
+  radial-gradient(ellipse 520px 420px at 88% 20%,rgba(255,110,190,.18),transparent 70%),
+  radial-gradient(ellipse 700px 380px at 60% 62%,rgba(40,170,210,.14),transparent 70%),
+  radial-gradient(ellipse 480px 300px at 18% 90%,rgba(255,160,120,.12),transparent 70%),
+  radial-gradient(circle,rgba(255,255,255,.85) .8px,transparent 1.2px),
+  radial-gradient(circle,rgba(220,210,255,.6) .6px,transparent 1px),
+  radial-gradient(circle,rgba(255,230,180,.9) 1.2px,transparent 1.8px);
+ background-size:auto,auto,auto,auto,97px 89px,53px 61px,211px 197px;
+ background-position:0 0,0 0,0 0,0 0,13px 7px,31px 43px,70px 120px;
+ background-attachment:fixed;
+}
+html body.dark ::selection{background:rgba(255,210,122,.35);color:#FFFFFF}
+html body.dark h1,html body.dark h2,html body.dark .intro h1,html body.dark .detail h1,html body.dark .guide h1,html body.dark .feature-copy h2,html body.dark .featured-heading h2,html body.dark .section-title h2{font-family:var(--font-title)!important;font-weight:600;color:#FFFFFF}
+html body.dark h3,html body.dark .top-ranking h3{font-family:var(--font-body);font-weight:700;color:#FFFFFF}
+html body.dark .eyebrow{color:#C9B6FF}
+
+/* Cabeçalho translúcido */
+html body.dark header{background:rgba(9,7,25,.6)!important;border-bottom:1px solid rgba(190,170,255,.18)!important;color:var(--ink)!important;backdrop-filter:blur(6px)}
+html body.dark header .brand-script{color:#EDE8FF!important}
+html body.dark header .brand-sub{color:#C9B6FF!important}
+html body.dark header nav a{color:#CFC6F0!important}
+html body.dark header nav a:hover{background:rgba(201,182,255,.14)}
+html body.dark header .icon,html body.dark header .admin-menu summary{background:rgba(255,255,255,.05)!important;border:1px solid rgba(190,170,255,.3)!important;color:#FFD27A!important}
+html body.dark header .admin-menu-links{background:#15112E!important;border:1px solid rgba(190,170,255,.3)!important;box-shadow:0 20px 40px rgba(0,0,0,.5)!important}
+html body.dark header .admin-menu-links a{color:#EDE8FF!important}
+html body.dark header .admin-menu-links a:hover{background:rgba(201,182,255,.12)!important}
+html body.dark .menu-user{color:#FFD27A}
+
+/* Botões dourados com brilho */
+html body.dark .btn{background:#FFD27A!important;border-color:#FFD27A!important;color:#2A1E00!important;box-shadow:0 0 22px rgba(255,210,122,.3)}
+html body.dark .btn:active{box-shadow:0 0 10px rgba(255,210,122,.3)}
+html body.dark .btn.secondary{background:transparent!important;color:#EDE8FF!important;border:1px solid rgba(201,182,255,.45)!important;box-shadow:none}
+html body.dark .btn.danger,html body.dark .btn.secondary.danger{color:#FFB5D0!important;border-color:rgba(255,140,190,.5)!important}
+
+/* Campos */
+html body.dark input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]),html body.dark select,html body.dark textarea{background:rgba(255,255,255,.05)!important;border:1px solid rgba(190,170,255,.28)!important;color:#EDE8FF!important}
+html body.dark select option{background:#15112E;color:#EDE8FF}
+html body.dark input[type=range]{accent-color:#FFD27A}
+html body.dark input[type=checkbox],html body.dark input[type=radio]{accent-color:#FFD27A}
+
+/* Painéis translúcidos */
+html body.dark .form-panel,html body.dark .admin-row,html body.dark .error-box,html body.dark .guide article,html body.dark .institutional,html body.dark .stats>div,html body.dark .genre-entry,html body.dark .rating-panel,html body.dark .genre-card,html body.dark .top-ranking,html body.dark .chapters a,html body.dark .feature-spot,html body.dark .continue-card{background:rgba(20,15,48,.72)!important;border:1px solid rgba(190,170,255,.24)!important;box-shadow:none!important;color:#EDE8FF!important}
+html body.dark.home .layout{background:rgba(14,10,36,.62)!important;border:1px solid rgba(190,170,255,.2)!important;box-shadow:none}
+html body.dark .stats b{color:#FFD27A}
+html body.dark .notice{background:rgba(255,210,122,.1)!important;color:#FFE7B0}
+html body.dark .pill,html body.dark .status-pill{background:transparent;border:1px solid rgba(190,170,255,.3);color:#CFC6F0}
+
+/* Chips como "constelações" */
+html body.dark .chip{background:rgba(201,182,255,.08)!important;border:1px solid rgba(201,182,255,.45)!important;color:#DCD0FF!important}
+html body.dark #genre-chips .chip:nth-child(5n+2){border-color:rgba(255,140,198,.5)!important;color:#FFC4E1!important}
+html body.dark #genre-chips .chip:nth-child(5n+3){border-color:rgba(120,220,230,.5)!important;color:#B5F0F5!important}
+html body.dark #genre-chips .chip:nth-child(5n+4){border-color:rgba(255,190,140,.5)!important;color:#FFD9BC!important}
+html body.dark #genre-chips .chip:nth-child(5n+5){border-color:rgba(201,182,255,.5)!important;color:#DCD0FF!important}
+html body.dark .chip.active{background:#FFD27A!important;border-color:#FFD27A!important;color:#2A1E00!important}
+
+/* Capas com brilho em vez de adesivo */
+html body.dark .modern-card .cover,html body.dark .card .cover,html body.dark .grid>article .cover{border:0;transform:none!important;box-shadow:0 0 0 1px rgba(255,255,255,.12),0 10px 30px rgba(156,76,255,.32)!important}
+html body.dark .grid>article:nth-child(3n+2) .cover{box-shadow:0 0 0 1px rgba(255,255,255,.12),0 10px 30px rgba(255,110,190,.28)!important}
+html body.dark .grid>article:nth-child(3n+3) .cover{box-shadow:0 0 0 1px rgba(255,255,255,.12),0 10px 30px rgba(40,170,210,.28)!important}
+html body.dark .grid>article .cover-link:hover .cover{transform:translateY(-3px)!important}
+html body.dark .modern-card h3,html body.dark .card h3{color:#FFFFFF}
+html body.dark .cover .badge{background:rgba(9,7,25,.82)!important;color:#DCD0FF!important;border:1px solid rgba(201,182,255,.5);transform:none}
+html body.dark .cover-new,html body.dark .chapter-new{background:rgba(9,7,25,.85)!important;color:#FFD27A!important;border:1px solid rgba(255,210,122,.7);box-shadow:none;transform:none}
+html body.dark .favorite-heart{background:rgba(9,7,25,.7)!important;color:#FF8CC6!important;border:1px solid rgba(255,140,198,.5)!important;box-shadow:none}
+html body.dark .chapter-link{background:rgba(255,255,255,.04)!important;border:1px solid rgba(190,170,255,.22)!important;color:#EDE8FF!important}
+html body.dark .compact-rating span{color:#FFD27A}
+html body.dark .pagination button{background:transparent;border:1px solid rgba(190,170,255,.3);color:#EDE8FF}
+html body.dark .pagination button[aria-current]{background:#FFD27A;color:#2A1E00;border-color:#FFD27A}
+
+/* Destaques sobre a galáxia */
+html body.dark .feature-spot{box-shadow:none!important}
+html body.dark .feature-copy,html body.dark .feature-copy h2{color:#FFFFFF!important}
+html body.dark .feature-copy .feature-meta,html body.dark .feature-synopsis{color:#B9AEE0!important}
+html body.dark .feature-cover{border:0;transform:none;box-shadow:0 0 0 1px rgba(255,255,255,.15),0 0 40px rgba(156,76,255,.45)!important}
+html body.dark .feature-dot{background:rgba(201,182,255,.35)!important}
+html body.dark .feature-dot.active{background:#FFD27A!important;box-shadow:0 0 10px #FFD27A}
+html body.dark .featured-controls button{background:rgba(255,255,255,.05)!important;border:1px solid rgba(190,170,255,.3)!important;color:#EDE8FF!important}
+
+/* Ranking como estrelas */
+html body.dark .top-ranking .rank>b{background:transparent!important;color:#FFD27A!important;font-family:var(--font-title)!important;font-size:22px!important}
+html body.dark .top-ranking .rank:nth-of-type(2)>b{color:#FFC4E1!important}
+html body.dark .top-ranking .rank:nth-of-type(3)>b{color:#B5F0F5!important}
+html body.dark .top-ranking .rank:nth-of-type(n+4)>b{color:#DCD0FF!important}
+html body.dark .top-ranking .rank small{color:#B9AEE0!important}
+
+/* Obra */
+html body.dark .detail .cover{border:0;transform:none;box-shadow:0 0 0 1px rgba(255,255,255,.15),0 0 50px rgba(156,76,255,.45)}
+html body.dark .chapters a:hover{border-color:rgba(255,210,122,.6)!important;background:rgba(255,210,122,.06)!important}
+html body.dark .rating-star{color:rgba(201,182,255,.35)}
+html body.dark .rating-star.selected,html body.dark .rating-star:hover,html body.dark .rating-fill{color:#FFD27A}
+
+/* Rodapé, toast, setas */
+html body.dark footer{background:rgba(9,7,25,.55);border-top:1px solid rgba(190,170,255,.18)!important;color:#B9AEE0}
+html body.dark footer a{color:#FFD27A!important}
+html body.dark #toast{background:#FFD27A!important;color:#2A1E00!important;box-shadow:0 0 22px rgba(255,210,122,.35)}
+html body.dark .scroll-controls button{background:rgba(20,15,48,.9)!important;color:#FFD27A!important;border:1px solid rgba(190,170,255,.35)!important;box-shadow:none}
+
+/* "Continuar lendo" e mascotes no escuro */
+html body.dark .continue-card .continue-label{background:transparent;color:#C9B6FF;box-shadow:none;transform:none;letter-spacing:3px;text-transform:uppercase;font-size:11px;top:14px;left:26px;padding:0}
+html body.dark .continue-card{padding-top:40px}
+html body.dark .continue-card .continue-cover{border:0;transform:none;box-shadow:0 0 0 1px rgba(255,255,255,.15),0 0 34px rgba(156,76,255,.45)}
+html body.dark .continue-card p{color:#B9AEE0}
+html body.dark .continue-progress .track{height:2px;background:rgba(201,182,255,.25)}
+html body.dark .continue-progress .fill{background:#FFD27A;box-shadow:0 0 10px #FFD27A}
+html body.dark .continue-progress .flower{display:none}
+html body.dark .continue-progress b{color:#FFD27A}
+html body.dark .mascot{filter:drop-shadow(0 0 14px rgba(255,210,122,.25))}
+
+/* Leitor: no escuro, o modo "Do site" vira galáxia (as estrelas ficam na moldura, a página fica calma) */
+html body.dark .kreader:not([class*=kr-theme-]){--kr-bg:#120E2C;--kr-ink:#E7E1F4;--kr-muted:#A99BD1;--kr-line:rgba(190,170,255,.18);--kr-accent:#FFD27A;--kr-mark:rgba(255,210,122,.22)}
+html body.dark .kreader:not([class*=kr-theme-]) .kr-panel{background:#15112E}
+html body:not(.dark) .kreader:not([class*=kr-theme-]){--kr-bg:#FFFFFF;--kr-ink:#3E2E3B;--kr-muted:#7A6475;--kr-line:#F3D7E0;--kr-accent:#B83B66;--kr-mark:rgba(251,208,220,.7)}
+html body .kreader{border-radius:24px}
+html body:not(.dark) .kreader{box-shadow:0 0 0 2px #F6E0E7}
+.mascot svg,.mascot-peek svg{display:block;width:100%;height:auto}
+.continue-progress .track>span{position:absolute;top:0}
+
+/* Celular: menu em uma linha só, abaixo do logo */
+@media(max-width:680px){
+ html body header nav{order:3;width:100%;display:flex!important;flex-wrap:nowrap!important;justify-content:center;gap:4px;margin:0}
+ html body header nav a{padding:8px 14px;font-size:13px;white-space:nowrap}
+}
+
+/* =====================================================================
+   Imagem de fundo original do Makorini (nuvens azul e roxa) em TODAS as
+   páginas, nos dois temas, por baixo do design novo.
+   ===================================================================== */
+html body{background-image:none}
+html body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:url("assets/nuvem-azul-roxa.png") center top/cover no-repeat;opacity:.5}
+html body.dark{background-image:
+  radial-gradient(circle,rgba(255,255,255,.85) .8px,transparent 1.2px),
+  radial-gradient(circle,rgba(220,210,255,.6) .6px,transparent 1px),
+  radial-gradient(circle,rgba(255,230,180,.9) 1.2px,transparent 1.8px);
+ background-size:97px 89px,53px 61px,211px 197px;background-position:13px 7px,31px 43px,70px 120px}
+html body.dark::before{opacity:.6;background:linear-gradient(rgba(8,6,24,.62),rgba(8,6,24,.72)),url("assets/nuvem-azul-roxa.png") center top/cover no-repeat}
+/* Tema claro: véu suave por cima das nuvens para o texto ficar legível */
+html body:not(.dark)::before{opacity:.35}
+
+/* =====================================================================
+   TEMA ESCURO · UNIVERSO (sobrescreve o bloco "galáxia" acima)
+   Nada de fofo aqui: céu profundo, constelações, lua, planetas e
+   nuvens de poeira estelar em tons escuros. Destaque = luz da lua.
+   ===================================================================== */
+html body.dark{
+ --bg:#03020A;--paper:rgba(8,7,22,.88);--ink:#E6E3F2;--muted:#9C98B8;--line:rgba(160,170,230,.16);--wash:rgba(140,150,230,.07);--head:rgba(3,2,10,.72);
+ --pink:#E9D9A6;--accent:#E9D9A6;--accent-ink:#17130A;--accent-deep:#B9A672;--rose:#8FB0FF;--rose-soft:rgba(143,176,255,.12);--stitch:rgba(160,170,230,.2);
+ background-color:#03020A;
+ background-image:
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='420'%3E%3Cg stroke='rgba(190,200,255,0.16)' stroke-width='0.8' fill='none'%3E%3Cpolyline points='40,60 92,88 150,70 196,112 178,170'/%3E%3Cpolyline points='196,112 252,104'/%3E%3Cpolyline points='330,250 372,214 430,230 468,190 450,140'/%3E%3Cpolyline points='372,214 396,276 360,320'/%3E%3C/g%3E%3Cg fill='rgba(235,230,255,0.75)'%3E%3Ccircle cx='40' cy='60' r='1.6'/%3E%3Ccircle cx='92' cy='88' r='1.2'/%3E%3Ccircle cx='150' cy='70' r='2'/%3E%3Ccircle cx='196' cy='112' r='1.4'/%3E%3Ccircle cx='178' cy='170' r='1.7'/%3E%3Ccircle cx='252' cy='104' r='1.1'/%3E%3Ccircle cx='330' cy='250' r='1.5'/%3E%3Ccircle cx='372' cy='214' r='2.1'/%3E%3Ccircle cx='430' cy='230' r='1.2'/%3E%3Ccircle cx='468' cy='190' r='1.6'/%3E%3Ccircle cx='450' cy='140' r='1.3'/%3E%3Ccircle cx='396' cy='276' r='1.1'/%3E%3Ccircle cx='360' cy='320' r='1.8'/%3E%3C/g%3E%3C/svg%3E"),
+  radial-gradient(ellipse 700px 420px at 8% 4%,rgba(70,40,150,.26),transparent 70%),
+  radial-gradient(ellipse 600px 460px at 92% 30%,rgba(30,60,140,.22),transparent 70%),
+  radial-gradient(ellipse 820px 400px at 55% 75%,rgba(90,30,110,.16),transparent 70%),
+  radial-gradient(circle,rgba(255,255,255,.8) .7px,transparent 1.1px),
+  radial-gradient(circle,rgba(190,205,255,.55) .5px,transparent .9px),
+  radial-gradient(circle,rgba(255,240,200,.85) 1px,transparent 1.6px);
+ background-size:520px 420px,auto,auto,auto,97px 89px,53px 61px,233px 211px;
+ background-position:0 0,0 0,0 0,0 0,13px 7px,31px 43px,70px 120px;
+ background-attachment:fixed;
+}
+/* Nuvens originais bem escurecidas, como poeira de nebulosa */
+html body.dark::before{opacity:.55;background:linear-gradient(rgba(3,2,10,.74),rgba(3,2,10,.84)),url("assets/nuvem-azul-roxa.png") center top/cover no-repeat;filter:saturate(.8)}
+/* Lua e planeta com anéis fixos no canto do céu */
+html body.dark::after{content:"";position:fixed;z-index:-1;pointer-events:none;right:-60px;top:90px;width:260px;height:260px;opacity:.5;
+ background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 260 260'%3E%3Cdefs%3E%3CradialGradient id='m' cx='35%25' cy='35%25'%3E%3Cstop offset='0' stop-color='%23F4EBCB'/%3E%3Cstop offset='1' stop-color='%237C7458'/%3E%3C/radialGradient%3E%3CradialGradient id='p' cx='35%25' cy='30%25'%3E%3Cstop offset='0' stop-color='%236A78C8'/%3E%3Cstop offset='1' stop-color='%23141A3C'/%3E%3C/radialGradient%3E%3C/defs%3E%3Cpath d='M70 20a48 48 0 1 0 52 66a40 40 0 1 1-52-66z' fill='url(%23m)'/%3E%3Ccircle cx='170' cy='175' r='44' fill='url(%23p)'/%3E%3Cellipse cx='170' cy='175' rx='78' ry='16' fill='none' stroke='rgba(233,217,166,0.55)' stroke-width='3' transform='rotate(-18 170 175)'/%3E%3C/svg%3E") center/contain no-repeat}
+@media(max-width:680px){html body.dark::after{width:150px;height:150px;right:-40px;top:70px;opacity:.35}}
+
+html body.dark ::selection{background:rgba(233,217,166,.3)}
+html body.dark h1,html body.dark h2,html body.dark .intro h1,html body.dark .detail h1,html body.dark .guide h1,html body.dark .feature-copy h2,html body.dark .featured-heading h2,html body.dark .section-title h2{letter-spacing:.02em;color:#F2EFFA;text-shadow:0 0 18px rgba(143,176,255,.18)}
+html body.dark .eyebrow{color:#8FB0FF;letter-spacing:.18em;text-transform:uppercase}
+html body.dark header{background:rgba(3,2,10,.78)!important;border-bottom:1px solid rgba(160,170,230,.14)!important}
+html body.dark header .brand-sub,html body.dark header nav a{color:#B8B5D4!important}
+html body.dark header nav a:hover{background:rgba(143,176,255,.1)}
+html body.dark header .icon,html body.dark header .admin-menu summary{border-color:rgba(160,170,230,.25)!important;color:#E9D9A6!important}
+html body.dark header .admin-menu-links{background:#0A0918!important;border-color:rgba(160,170,230,.22)!important}
+html body.dark .menu-user{color:#E9D9A6}
+
+/* Botões: luz da lua, sem brilho neon */
+html body.dark .btn{background:#E9D9A6!important;border-color:#E9D9A6!important;color:#17130A!important;box-shadow:0 0 18px rgba(233,217,166,.18)}
+html body.dark .btn.secondary{background:transparent!important;color:#E6E3F2!important;border:1px solid rgba(160,170,230,.35)!important;box-shadow:none}
+html body.dark .btn.danger,html body.dark .btn.secondary.danger{color:#FF9FA8!important;border-color:rgba(255,120,140,.45)!important}
+html body.dark input:not([type=checkbox]):not([type=radio]):not([type=range]):not([type=file]),html body.dark select,html body.dark textarea{background:rgba(255,255,255,.03)!important;border-color:rgba(160,170,230,.22)!important}
+html body.dark select option{background:#0A0918}
+html body.dark input[type=range],html body.dark input[type=checkbox],html body.dark input[type=radio]{accent-color:#E9D9A6}
+
+/* Painéis: vidro escuro, borda fina fria */
+html body.dark .form-panel,html body.dark .admin-row,html body.dark .error-box,html body.dark .guide article,html body.dark .institutional,html body.dark .stats>div,html body.dark .genre-entry,html body.dark .rating-panel,html body.dark .genre-card,html body.dark .top-ranking,html body.dark .chapters a,html body.dark .feature-spot,html body.dark .continue-card{background:rgba(8,7,22,.82)!important;border:1px solid rgba(160,170,230,.16)!important;backdrop-filter:blur(3px)}
+html body.dark.home .layout{background:rgba(5,4,15,.7)!important;border-color:rgba(160,170,230,.14)!important}
+html body.dark .stats b{color:#E9D9A6}
+html body.dark .notice{background:rgba(233,217,166,.07)!important;color:#EDE2BE}
+html body.dark .pill,html body.dark .status-pill{border-color:rgba(160,170,230,.26);color:#B8B5D4}
+
+/* Gêneros: sem arco-íris; prata e azul-estelar */
+html body.dark .chip,html body.dark #genre-chips .chip:nth-child(n){background:rgba(143,176,255,.05)!important;border:1px solid rgba(160,170,230,.3)!important;color:#CFD6F5!important}
+html body.dark .chip.active,html body.dark #genre-chips .chip.active:nth-child(n){background:#E9D9A6!important;border-color:#E9D9A6!important;color:#17130A!important}
+
+/* Capas: halo frio, como astros */
+html body.dark .modern-card .cover,html body.dark .card .cover,html body.dark .grid>article .cover,html body.dark .grid>article:nth-child(n) .cover{box-shadow:0 0 0 1px rgba(255,255,255,.08),0 12px 30px rgba(0,0,0,.6),0 0 26px rgba(90,110,220,.18)!important}
+html body.dark .feature-cover,html body.dark .detail .cover,html body.dark .continue-card .continue-cover{box-shadow:0 0 0 1px rgba(255,255,255,.1),0 0 40px rgba(90,110,220,.3)!important}
+html body.dark .cover .badge{background:rgba(3,2,10,.85)!important;color:#CFD6F5!important;border-color:rgba(160,170,230,.4)}
+html body.dark .cover-new,html body.dark .chapter-new{background:rgba(3,2,10,.88)!important;color:#E9D9A6!important;border-color:rgba(233,217,166,.6)}
+html body.dark .favorite-heart{background:rgba(3,2,10,.75)!important;color:#E9D9A6!important;border-color:rgba(233,217,166,.45)!important}
+html body.dark .chapter-link{background:rgba(255,255,255,.025)!important;border-color:rgba(160,170,230,.18)!important}
+html body.dark .compact-rating span,html body.dark .rating-star.selected,html body.dark .rating-star:hover,html body.dark .rating-fill{color:#E9D9A6}
+html body.dark .rating-star{color:rgba(160,170,230,.3)}
+html body.dark .pagination button{border-color:rgba(160,170,230,.26)}
+html body.dark .pagination button[aria-current]{background:#E9D9A6;border-color:#E9D9A6;color:#17130A}
+html body.dark .feature-copy .feature-meta,html body.dark .feature-synopsis,html body.dark .continue-card p,html body.dark .top-ranking .rank small{color:#9C98B8!important}
+html body.dark .feature-dot{background:rgba(160,170,230,.3)!important}
+html body.dark .feature-dot.active{background:#E9D9A6!important;box-shadow:0 0 8px rgba(233,217,166,.7)}
+html body.dark .top-ranking .rank>b,html body.dark .top-ranking .rank:nth-of-type(n)>b{color:#8FB0FF!important}
+html body.dark .top-ranking .rank:nth-of-type(1)>b{color:#E9D9A6!important}
+html body.dark .chapters a:hover{border-color:rgba(233,217,166,.45)!important;background:rgba(233,217,166,.04)!important}
+html body.dark footer{background:rgba(3,2,10,.8);border-top-color:rgba(160,170,230,.14)!important;color:#9C98B8}
+html body.dark footer a{color:#E9D9A6!important}
+html body.dark #toast{background:#E9D9A6!important;color:#17130A!important;box-shadow:0 0 18px rgba(233,217,166,.25)}
+html body.dark .scroll-controls button{background:rgba(8,7,22,.92)!important;color:#E9D9A6!important;border-color:rgba(160,170,230,.3)!important}
+html body.dark .continue-card .continue-label{color:#8FB0FF}
+html body.dark .continue-progress .track{background:rgba(160,170,230,.2)}
+html body.dark .continue-progress .fill{background:linear-gradient(90deg,#8FB0FF,#E9D9A6);box-shadow:0 0 8px rgba(233,217,166,.5)}
+html body.dark .continue-progress b{color:#E9D9A6}
+
+/* Mascotes fofos ficam só no tema claro; no escuro aparece um astro (lua + planeta) */
+html body.dark .mascot svg,html body.dark .mascot-peek svg{display:none}
+html body.dark .mascot,html body.dark .mascot-peek{filter:none;aspect-ratio:1;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 120'%3E%3Cdefs%3E%3CradialGradient id='p' cx='35%25' cy='30%25'%3E%3Cstop offset='0' stop-color='%237F8EE0'/%3E%3Cstop offset='1' stop-color='%23161B42'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='60' cy='64' r='30' fill='url(%23p)'/%3E%3Cellipse cx='60' cy='64' rx='54' ry='11' fill='none' stroke='%23E9D9A6' stroke-opacity='.7' stroke-width='2.5' transform='rotate(-16 60 64)'/%3E%3Cpath d='M28 14a12 12 0 1 0 14 16a10 10 0 1 1-14-16z' fill='%23E9D9A6'/%3E%3Cg fill='%23E6E3F2'%3E%3Ccircle cx='100' cy='18' r='1.6'/%3E%3Ccircle cx='108' cy='40' r='1'/%3E%3Ccircle cx='14' cy='96' r='1.3'/%3E%3Ccircle cx='96' cy='104' r='1.1'/%3E%3C/g%3E%3C/svg%3E") center/contain no-repeat}
+
+/* Leitor no escuro: azul-noite profundo */
+html body.dark .kreader:not([class*=kr-theme-]){--kr-bg:#07061A;--kr-ink:#E2DFEE;--kr-muted:#9C98B8;--kr-line:rgba(160,170,230,.14);--kr-accent:#E9D9A6;--kr-mark:rgba(143,176,255,.22)}
+html body.dark .kreader:not([class*=kr-theme-]) .kr-panel{background:#0A0918}
+
+/* =====================================================================
+   Agregador: selos na capa, botões "Ler em …" e formulário de links
+   ===================================================================== */
+.cover-tags{position:absolute;left:8px;bottom:8px;z-index:3;display:flex;gap:4px;align-items:center;pointer-events:none}
+.tag-aggregator{display:inline-block;background:#0F7A6C;color:#fff;font:700 10px/1 'DM Sans',sans-serif;padding:5px 8px;border-radius:999px;letter-spacing:.02em}
+.tag-lang{display:inline-grid;place-items:center;min-width:24px;height:22px;padding:0 4px;border-radius:999px;background:rgba(255,255,255,.92);font-size:13px;line-height:1;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+.pill.tag-aggregator{border:0;padding:6px 12px;font-size:12px}
+.external-where{margin:14px 0 4px;padding:14px 16px;border-radius:16px;background:var(--wash);display:grid;gap:6px}
+.external-where .actions{margin:4px 0 0}
+.external-link{text-decoration:none}
+.external-links-field{display:grid;gap:8px}
+.ext-link-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr) auto;gap:8px;align-items:center;margin-bottom:6px}
+.ext-link-row .btn{padding:8px 12px}
+@media(max-width:680px){.ext-link-row{grid-template-columns:1fr auto}.ext-link-row [data-ext-url]{grid-column:1/-1;grid-row:2}}
+html body.dark .tag-aggregator{background:rgba(3,2,10,.85);color:#8FE0D2;border:1px solid rgba(143,224,210,.5)}
+html body.dark .tag-lang{background:rgba(3,2,10,.85);box-shadow:0 0 0 1px rgba(160,170,230,.35)}
+html body.dark .external-where{background:rgba(8,7,22,.7);border:1px solid rgba(160,170,230,.16)}
+/* Idioma como sigla (o Windows não desenha emoji de bandeira) */
+.tag-lang{font:800 9px/1 'DM Sans',sans-serif;letter-spacing:.04em;color:#3E2E3B;height:20px;padding:0 6px}
+html body.dark .tag-lang{color:#CFD6F5}
+html body .pill.tag-aggregator{background:#0F7A6C!important;color:#fff!important;border:0!important}
+html body.dark .pill.tag-aggregator{background:rgba(3,2,10,.85)!important;color:#8FE0D2!important;border:1px solid rgba(143,224,210,.5)!important}
+.external-links-field #add-ext-link{justify-self:start;width:auto}
+/* Lua e planeta fixos no canto removidos a pedido: ficaram estranhos */
+html body.dark::after{content:none;display:none}
+/* Barra de progresso no escuro: uma estrelinha brilhante no lugar da flor */
+html body.dark .continue-progress .track>span::before{content:"★";position:absolute;left:-10px;top:-10px;width:20px;height:20px;font-size:19px;line-height:20px;text-align:center;color:#F6E7B4;text-shadow:0 0 6px rgba(246,231,180,.9),0 0 14px rgba(143,176,255,.6)}
+
+/* =====================================================================
+   TEMA ESCURO · acabamento "cosmos" (mais rico que o básico acima)
+   ===================================================================== */
+/* Botão principal: ouro estelar com brilho interno e reflexo que passa no hover */
+html body.dark .btn:not(.secondary){position:relative;overflow:hidden;
+ background:linear-gradient(135deg,#FBF0C8 0%,#E9D9A6 35%,#C9A85E 70%,#E9D9A6 100%)!important;background-size:200% 200%!important;
+ border:1px solid rgba(255,245,210,.7)!important;color:#1A1405!important;font-weight:700;letter-spacing:.02em;
+ box-shadow:inset 0 1px 0 rgba(255,255,255,.65),inset 0 -2px 0 rgba(120,90,30,.35),0 0 0 1px rgba(233,217,166,.15),0 6px 22px rgba(233,217,166,.22),0 0 34px rgba(143,176,255,.12)!important;
+ transition:background-position .5s ease,box-shadow .25s ease,transform .15s ease}
+html body.dark .btn:not(.secondary)::before{content:"✦";margin-right:7px;font-size:.85em;color:#7A5A18;text-shadow:0 0 6px rgba(255,255,255,.8)}
+html body.dark .btn:not(.secondary)::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);transition:left .6s ease;pointer-events:none}
+html body.dark .btn:not(.secondary):hover{background-position:100% 50%!important;transform:translateY(-1px);box-shadow:inset 0 1px 0 rgba(255,255,255,.7),inset 0 -2px 0 rgba(120,90,30,.35),0 0 0 1px rgba(233,217,166,.3),0 10px 30px rgba(233,217,166,.35),0 0 50px rgba(143,176,255,.22)!important}
+html body.dark .btn:not(.secondary):hover::after{left:130%}
+html body.dark .btn.danger:not(.secondary){background:linear-gradient(135deg,#FFB3BC,#D9536A)!important;border-color:rgba(255,180,190,.6)!important;color:#2A0509!important}
+html body.dark .btn.danger:not(.secondary)::before{content:none}
+/* Botão secundário: vidro com borda em degradê de nebulosa */
+html body.dark .btn.secondary{border:1px solid transparent!important;
+ background:linear-gradient(rgba(12,10,32,.92),rgba(12,10,32,.92)) padding-box,linear-gradient(135deg,rgba(143,176,255,.75),rgba(178,140,255,.45) 50%,rgba(233,217,166,.7)) border-box!important;
+ color:#E6E3F2!important;box-shadow:0 0 18px rgba(120,130,255,.12)!important;transition:box-shadow .25s ease,transform .15s ease}
+html body.dark .btn.secondary:hover{transform:translateY(-1px);box-shadow:0 0 22px rgba(143,176,255,.3),inset 0 0 14px rgba(143,176,255,.12)!important;color:#FFFFFF!important}
+html body.dark .btn.secondary.danger{background:linear-gradient(rgba(12,10,32,.92),rgba(12,10,32,.92)) padding-box,linear-gradient(135deg,rgba(255,140,160,.8),rgba(180,80,120,.5)) border-box!important}
+html body.dark .kr-tool,html body.dark .pagination button{transition:box-shadow .2s}
+html body.dark .pagination button:hover{box-shadow:0 0 12px rgba(143,176,255,.35)}
+
+/* Painéis: vidro escuro com borda em degradê e brilho de nebulosa no canto */
+html body.dark .continue-card,html body.dark .feature-spot,html body.dark .top-ranking,html body.dark .form-panel,html body.dark .rating-panel,html body.dark .error-box,html body.dark .guide article,html body.dark .external-where{
+ border:1px solid transparent!important;
+ background:
+  radial-gradient(ellipse 420px 220px at 100% 0%,rgba(110,80,220,.20),transparent 70%) padding-box,
+  radial-gradient(ellipse 380px 200px at 0% 100%,rgba(40,90,190,.16),transparent 70%) padding-box,
+  linear-gradient(rgba(8,7,22,.9),rgba(8,7,22,.9)) padding-box,
+  linear-gradient(135deg,rgba(143,176,255,.55),rgba(160,120,255,.12) 35%,rgba(160,120,255,.08) 65%,rgba(233,217,166,.5)) border-box!important;
+ box-shadow:0 24px 60px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.04)!important}
+html body.dark.home .layout{border:1px solid transparent!important;background:linear-gradient(rgba(5,4,15,.78),rgba(5,4,15,.78)) padding-box,linear-gradient(180deg,rgba(143,176,255,.3),rgba(143,176,255,.04) 40%,rgba(233,217,166,.2)) border-box!important}
+html body.dark .continue-card .continue-label::before{content:"✦ ";color:#E9D9A6}
+
+/* Títulos: degradê de luz estelar */
+html body.dark h1,html body.dark .section-title h2,html body.dark .feature-copy h2,html body.dark .continue-card h2,html body.dark .featured-heading h2{
+ background:linear-gradient(100deg,#FFFFFF 0%,#DCE3FF 45%,#F3E3B0 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none}
+html body.dark .section-title{position:relative}
+html body.dark .section-title::after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:1px;background:linear-gradient(90deg,rgba(233,217,166,.55),rgba(143,176,255,.25) 40%,transparent)}
+html body.dark .section-title .dot{width:9px;height:9px;background:#F6E7B4!important;border-radius:50%;box-shadow:0 0 6px #F6E7B4,0 0 14px rgba(143,176,255,.8)}
+
+/* Cabeçalho: linha de horizonte iluminada */
+html body.dark header{border-bottom:0!important;box-shadow:0 1px 0 rgba(143,176,255,.12),0 10px 30px rgba(0,0,0,.35)}
+html body.dark header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,rgba(143,176,255,.55) 30%,rgba(233,217,166,.6) 60%,transparent);pointer-events:none}
+html body.dark header nav a{position:relative}
+html body.dark header nav a:hover{color:#FFFFFF!important;text-shadow:0 0 10px rgba(143,176,255,.7)}
+
+/* Capas e cartões: halo dourado ao passar o mouse */
+html body.dark .grid>article .cover-link .cover{transition:transform .25s ease,box-shadow .25s ease}
+html body.dark .grid>article .cover-link:hover .cover{box-shadow:0 0 0 1px rgba(233,217,166,.45),0 14px 36px rgba(0,0,0,.6),0 0 34px rgba(233,217,166,.25)!important}
+html body.dark .chip:hover{box-shadow:0 0 12px rgba(143,176,255,.35);color:#FFFFFF!important}
+html body.dark .chapter-link:hover{border-color:rgba(233,217,166,.45)!important;box-shadow:0 0 14px rgba(233,217,166,.15)}
+html body.dark .top-ranking .rank{border-bottom-color:rgba(160,170,230,.1)}
+html body.dark .top-ranking .rank:nth-of-type(1)>b{text-shadow:0 0 12px rgba(233,217,166,.8)}
+
+/* Estrelas que cintilam devagar (desligado para quem prefere menos movimento) */
+html body.dark::after{content:"";display:block;position:fixed;inset:0;z-index:-1;pointer-events:none;
+ background-image:radial-gradient(circle,rgba(255,250,230,.95) 1.1px,transparent 2px),radial-gradient(circle,rgba(200,215,255,.9) .9px,transparent 1.7px);
+ background-size:317px 283px,191px 239px;background-position:40px 60px,120px 10px;animation:mk-twinkle 5s ease-in-out infinite alternate}
+@keyframes mk-twinkle{0%{opacity:.15}100%{opacity:.9}}
+@media(prefers-reduced-motion:reduce){html body.dark::after{animation:none;opacity:.5}html body.dark .btn::after{display:none}}
+html body.dark header::after{content:none}
+html body.dark header{border-bottom:1px solid transparent!important;border-image:linear-gradient(90deg,transparent,rgba(143,176,255,.55) 30%,rgba(233,217,166,.6) 60%,transparent) 1!important}
+/* Pontos do carrossel de destaques: pequenos de novo (nos dois temas) */
+html body .feature-dot{min-height:0!important;min-width:0!important;height:9px!important;width:9px;padding:0!important;border:0!important;box-shadow:none;border-radius:999px!important}
+html body .feature-dot.active{width:26px}
+html body.dark .feature-dot.active{background:linear-gradient(90deg,#8FB0FF,#F6E7B4)!important;box-shadow:0 0 10px rgba(246,231,180,.7)}
+
+/* =====================================================================
+   Cabeçalho novo: busca, sino de novidades, tema (lua/sol) e avatar.
+   O logo (brand) não muda.
+   ===================================================================== */
+html body header{display:flex;align-items:center;flex-wrap:wrap}
+html body header nav{margin-right:auto}
+.header-search{position:relative;display:flex;align-items:center;flex:0 1 330px;min-width:180px;margin:0}
+.header-search svg{position:absolute;left:14px;width:17px;height:17px;color:#A06A84;pointer-events:none}
+html body .header-search input{width:100%;height:44px;border-radius:999px!important;padding:0 16px 0 40px!important;border:2px solid #F6D3DC!important;background:#FFF3F6!important;color:var(--ink)!important;font-size:14px}
+html body .header-search input:focus{outline:none;border-color:#F28FAB!important;background:#FFFFFF!important}
+html body header .icon svg,html body header .admin-menu summary svg{width:21px;height:21px;display:block}
+html body header .icon,html body header .admin-menu summary{display:grid;place-items:center;padding:0;cursor:pointer}
+html body header .admin-menu summary{padding:2px}
+html body header .admin-menu summary svg{width:36px;height:36px}
+html body header .admin-menu summary{background:#FFE8EF!important;border-color:#F3B9C9!important}
+.avatar-star,.ico-sun{display:none!important}
+html body.dark .avatar-bunny,html body.dark .ico-moon{display:none!important}
+html body.dark .avatar-star,html body.dark .ico-sun{display:block!important}
+
+/* Sino */
+.notif{position:relative}
+.notif>summary{list-style:none;position:relative}
+.notif>summary::-webkit-details-marker{display:none}
+.notif-count{position:absolute;top:-4px;right:-4px;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:#D9557F;color:#fff;font:800 11px/19px 'DM Sans',sans-serif;text-align:center;border:2px solid #fff}
+.notif-count[hidden]{display:none}
+.notif-list{position:absolute;right:0;top:calc(100% + 10px);z-index:40;width:min(320px,86vw);display:grid;gap:4px;padding:12px;background:#FFFFFF;border:2px solid #F6D3DC;border-radius:18px;box-shadow:0 6px 0 var(--stitch),0 18px 40px rgba(80,40,60,.15)}
+.notif-list>strong{font-size:13px;padding:2px 6px 6px}
+.notif-list a{display:grid;gap:2px;padding:9px 10px;border-radius:12px;color:var(--ink)}
+.notif-list a:hover{background:var(--rose-soft)}
+.notif-list a small{color:var(--muted)}
+.notif-list .hint{margin:4px 6px}
+.notif-list #notif-clear{justify-self:start;margin:6px 6px 2px;background:none;border:0;padding:0;color:#A8325C;font-weight:700;cursor:pointer}
+
+/* Topo da inicial: continuar lendo + sequência lado a lado */
+.home-top{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:stretch;margin:6px 0 30px}
+.home-top.single{grid-template-columns:1fr}
+.home-top .continue-card{margin:0}
+.streak-card{background:#FFF1C9;border:2px dashed #E8C66B;border-radius:28px;padding:22px 24px;display:flex;flex-direction:column;gap:6px;color:#5A4210}
+.streak-card h2{margin:0 0 2px;font-size:22px;font-family:var(--font-title);color:#5A3A0A}
+.streak-card p{margin:0;font-size:14px;line-height:1.5;color:#6E5520}
+.streak-week{list-style:none;margin:8px 0 6px;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.streak-week li{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font:800 12px 'DM Sans',sans-serif;border:2px dashed #E8C66B;background:#FFFBEF;color:#7A5A18}
+.streak-week li.done{background:#FFD66B;border:2px solid #FFD66B;color:#5A3A0A}
+.streak-week li.today{box-shadow:0 0 0 3px #FFF1C9,0 0 0 5px #D9557F}
+.streak-goal{margin-top:auto!important;padding-top:6px;font-size:13px!important}
+html body .streak-goal input{width:56px;height:28px;padding:0 6px!important;border-radius:8px!important;border:2px solid #E8C66B!important;background:#FFFBEF!important;color:#5A3A0A!important;font-weight:700;text-align:center}
+@media(max-width:980px){.home-top{grid-template-columns:1fr}.header-search{order:5;flex:1 1 100%}}
+
+/* --- Tema escuro (estelar) --- */
+html body.dark .header-search svg{color:#9CA8E0}
+html body.dark .header-search input{background:rgba(255,255,255,.04)!important;border:1px solid rgba(160,170,230,.3)!important;color:#E6E3F2!important}
+html body.dark .header-search input:focus{border-color:rgba(233,217,166,.7)!important;box-shadow:0 0 16px rgba(143,176,255,.25)}
+html body.dark header .admin-menu summary{background:#0B0A22!important;border-color:rgba(233,217,166,.5)!important;box-shadow:0 0 14px rgba(233,217,166,.2)}
+html body.dark .notif-count{background:#E9D9A6;color:#17130A;border-color:#03020A;box-shadow:0 0 8px rgba(233,217,166,.7)}
+html body.dark .notif-list{background:#0A0918;border:1px solid rgba(160,170,230,.25);box-shadow:0 20px 50px rgba(0,0,0,.6)}
+html body.dark .notif-list a{color:#E6E3F2}
+html body.dark .notif-list a:hover{background:rgba(143,176,255,.1)}
+html body.dark .notif-list #notif-clear{color:#E9D9A6}
+html body.dark .streak-card{border:1px solid transparent;color:#E6E3F2;
+ background:radial-gradient(ellipse 260px 160px at 100% 0%,rgba(233,217,166,.16),transparent 70%) padding-box,linear-gradient(rgba(8,7,22,.9),rgba(8,7,22,.9)) padding-box,linear-gradient(135deg,rgba(233,217,166,.6),rgba(160,120,255,.15) 50%,rgba(143,176,255,.5)) border-box;box-shadow:0 24px 60px rgba(0,0,0,.55)}
+html body.dark .streak-card h2{background:linear-gradient(100deg,#FFFFFF,#F3E3B0);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+html body.dark .streak-card p{color:#9C98B8}
+html body.dark .streak-week li{background:transparent;border:1px dashed rgba(160,170,230,.4);color:#9C98B8}
+html body.dark .streak-week li.done{background:radial-gradient(circle at 35% 35%,#FBF0C8,#C9A85E);border:1px solid #F6E7B4;color:#17130A;box-shadow:0 0 10px rgba(233,217,166,.5)}
+html body.dark .streak-week li.today{box-shadow:0 0 0 2px #03020A,0 0 0 3px #8FB0FF}
+html body.dark .streak-goal b{color:#E9D9A6}
+html body.dark .streak-goal input{background:rgba(255,255,255,.04)!important;border:1px solid rgba(160,170,230,.35)!important;color:#E9D9A6!important}
+/* Cabeçalho compacto: tudo numa linha em telas médias */
+html body header{gap:10px 12px}
+html body header nav a{padding:9px 12px}
+@media(max-width:1180px){.header-search{flex:1 1 200px;min-width:140px}}
+@media(max-width:860px){.header-search{order:5;flex:1 1 100%}}
+html body header .brand{flex:0 0 auto}
+html body header nav{flex:0 0 auto;display:flex;flex-wrap:nowrap}
+html body header nav a{white-space:nowrap}
+.header-search{flex:1 1 200px!important;max-width:340px;min-width:150px}
+@media(max-width:1100px){html body header nav{margin-right:0}.header-search{order:5;flex:1 1 100%!important;max-width:none}}
+.streak-week{gap:6px;flex-wrap:nowrap}.streak-week li{width:30px;height:30px;flex:0 0 30px;font-size:11px}
+html body header{position:relative;z-index:30}
+/* Botão da conta com texto ("Entrar" ou o nome) ao lado do coelhinho/estrela */
+html body header .admin-menu summary{width:auto!important;height:44px;border-radius:999px!important;display:flex!important;align-items:center;gap:8px;padding:2px 16px 2px 3px!important}
+.account-label{font:700 14px 'DM Sans',sans-serif;color:#8E2A4D;white-space:nowrap;max-width:120px;overflow:hidden;text-overflow:ellipsis}
+html body.dark .account-label{color:#E9D9A6}
+@media(max-width:520px){.account-label{display:none}html body header .admin-menu summary{padding:2px!important;width:44px!important;justify-content:center}}
+
+/* =====================================================================
+   Celular: cabeçalho organizado em 3 linhas alinhadas
+   1) logo à esquerda + sino, conta e tema à direita
+   2) menu   3) busca
+   ===================================================================== */
+@media(max-width:760px){
+ html body header{display:grid!important;grid-template-columns:minmax(0,1fr) auto auto auto;grid-template-areas:"brand notif account theme" "nav nav nav nav" "search search search search";align-items:center;gap:10px 6px;padding:12px 14px!important}
+ html body header .brand{grid-area:brand;min-width:0;overflow:hidden}
+ html body header .notif{grid-area:notif}
+ html body header #admin-menu{grid-area:account}
+ html body header #theme{grid-area:theme}
+ html body header nav{grid-area:nav;order:0!important;width:auto!important;margin:0!important;justify-content:space-around!important}
+ html body header .header-search{grid-area:search;order:0;max-width:none;min-width:0;width:100%}
+ html body header .icon,html body header .admin-menu summary,html body header .notif>summary{width:40px!important;height:40px!important}
+ html body header .admin-menu summary svg{width:32px;height:32px}
+ html body header .account-label{display:none}
+ html body header .admin-menu summary{padding:2px!important;justify-content:center}
+ html body .header-search input{height:40px}
+ .notif-list,html body header .admin-menu-links{right:0;left:auto;max-width:calc(100vw - 28px)}
+}
+@media(max-width:380px){html body header .icon,html body header .admin-menu summary,html body header .notif>summary{width:36px!important;height:36px!important}html body header .admin-menu summary svg{width:28px;height:28px}}
+/* Celular: "Continuar lendo" compacto (capa ao lado do título) */
+@media(max-width:680px){
+ .continue-card{display:grid!important;grid-template-columns:84px minmax(0,1fr);gap:8px 14px;padding:38px 16px 18px!important;align-items:start}
+ .continue-card .continue-cover{width:84px;grid-row:1}
+ .continue-card .continue-info{display:contents}
+ .continue-card h2{grid-column:2;grid-row:1;font-size:20px!important;margin:4px 0 0}
+ .continue-card .continue-info>p{grid-column:2;grid-row:1;align-self:end;margin:0 0 4px}
+ .continue-card .continue-progress{grid-column:1/-1;margin:6px 0 4px}
+ .continue-card .actions{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+ .continue-card .actions .btn{padding:11px 8px;font-size:13px;text-align:center;justify-content:center}
+ .home-top{gap:16px;margin-bottom:22px}
+ .streak-card{padding:18px}
+}
+@media(max-width:680px){html body.dark .continue-card .btn:not(.secondary)::before{content:none}.continue-card .actions .btn{white-space:nowrap;font-size:12.5px}}
+/* Celular: gêneros recolhidos numa única linha que desliza para o lado */
+@media(max-width:680px){
+ #genre-chips{display:flex!important;flex-wrap:nowrap!important;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:none;gap:8px;padding:2px 2px 6px;margin-right:-14px;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}
+ #genre-chips::-webkit-scrollbar{display:none}
+ #genre-chips .chip{flex:0 0 auto;white-space:nowrap;padding:7px 14px;font-size:13px}
+}
+/* Celular: filtros do catálogo recolhidos atrás do botão "Filtros" */
+.filters-toggle{display:none}
+@media(max-width:680px){
+ #catalog-toolbar{display:grid!important;grid-template-columns:minmax(0,1fr) auto;gap:8px}
+ #catalog-toolbar #search{grid-column:1}
+ .filters-toggle{display:inline-flex;align-items:center;gap:6px;grid-column:2;height:100%;min-height:44px;padding:0 16px;border-radius:999px;border:2px solid #F6D3DC;background:#FFFFFF;color:#8E2A4D;font:700 14px 'DM Sans',sans-serif;cursor:pointer}
+ .filters-toggle span{transition:transform .2s}
+ #catalog-toolbar.filters-open .filters-toggle span{transform:rotate(180deg)}
+ #catalog-toolbar select{display:none}
+ #catalog-toolbar.filters-open select{display:block;grid-column:auto;min-width:0;width:100%}
+ #catalog-toolbar.filters-open{grid-template-columns:1fr 1fr}
+ #catalog-toolbar.filters-open #search{grid-column:1}
+ html body.dark .filters-toggle{background:rgba(255,255,255,.04);border:1px solid rgba(160,170,230,.35);color:#E9D9A6}
+}
+@media(max-width:680px){html body #catalog-toolbar select{display:none!important}html body #catalog-toolbar.filters-open select{display:block!important}}
+/* Celular: só a busca + botão de ajustes (ícone) ao lado; ajustes abrem em 2 colunas */
+@media(max-width:680px){
+ html body #catalog-toolbar,html body #catalog-toolbar.filters-open{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 48px}
+ html body #catalog-toolbar #search{grid-column:1/3;grid-row:1}
+ .filters-toggle{grid-column:3;grid-row:1;width:48px;padding:0;justify-content:center}
+ .filters-toggle svg{width:22px;height:22px}
+ #catalog-toolbar.filters-open .filters-toggle{background:#B83B66;color:#fff;border-color:#B83B66}
+ html body.dark #catalog-toolbar.filters-open .filters-toggle{background:#E9D9A6;color:#17130A;border-color:#E9D9A6}
+ html body #catalog-toolbar.filters-open select:nth-of-type(odd){grid-column:1}
+ html body #catalog-toolbar.filters-open select:nth-of-type(even){grid-column:2/4}
+}
+@media(max-width:680px){
+ html body #catalog-toolbar,html body #catalog-toolbar.filters-open{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ html body #catalog-toolbar #search,html body #catalog-toolbar.filters-open #search{grid-column:1/3!important;grid-row:1;padding-right:62px!important}
+ html body .filters-toggle{grid-column:2!important;grid-row:1;justify-self:end;width:48px;margin-right:0}
+ html body #catalog-toolbar.filters-open select:nth-of-type(odd){grid-column:1!important}
+ html body #catalog-toolbar.filters-open select:nth-of-type(even){grid-column:2!important}
+}
+
+/* =====================================================================
+   Tablet (761–1100px): cabeçalho em 2 linhas alinhadas
+   1) logo à esquerda + sino, conta e tema à direita
+   2) menu à esquerda + busca ocupando o resto
+   ===================================================================== */
+@media(min-width:761px) and (max-width:1100px){
+ html body header{display:grid!important;grid-template-columns:auto minmax(0,1fr) auto auto auto;grid-template-areas:"brand . notif account theme" "nav search search search search";align-items:center;gap:12px 10px;padding:14px 22px!important}
+ html body header .brand{grid-area:brand}
+ html body header .notif{grid-area:notif}
+ html body header #admin-menu{grid-area:account}
+ html body header #theme{grid-area:theme}
+ html body header nav{grid-area:nav;margin:0!important;order:0!important;width:auto!important}
+ html body header .header-search{grid-area:search;order:0!important;max-width:none!important;min-width:0;width:100%;flex:none!important}
+}
+/* Controles deslizantes (largura, tamanho da letra…) com cara de controle, não de caixa */
+html body input[type=range]{-webkit-appearance:none;appearance:none;height:26px;padding:0!important;border:0!important;background:transparent!important;box-shadow:none!important}
+html body input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:999px;background:#F6D3DC}
+html body input[type=range]::-moz-range-track{height:6px;border-radius:999px;background:#F6D3DC}
+html body input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;margin-top:-7px;border-radius:50%;background:#B83B66;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+html body input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#B83B66;border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+html body.dark input[type=range]::-webkit-slider-runnable-track{background:rgba(160,170,230,.25)}
+html body.dark input[type=range]::-moz-range-track{background:rgba(160,170,230,.25)}
+html body.dark input[type=range]::-webkit-slider-thumb{background:#E9D9A6;border-color:#0A0918;box-shadow:0 0 8px rgba(233,217,166,.6)}
+html body.dark input[type=range]::-moz-range-thumb{background:#E9D9A6;border-color:#0A0918}
+/* Tablet: catálogo ocupa a largura toda; o Top 10 desce para baixo em 2 colunas */
+@media(min-width:681px) and (max-width:1100px){
+ html body .catalog-layout{grid-template-columns:1fr!important}
+ html body .catalog-layout .grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}
+ html body .catalog-layout .top-ranking{display:grid;grid-template-columns:1fr 1fr;column-gap:24px}
+ html body .catalog-layout .top-ranking>h3,html body .catalog-layout .top-ranking>:not(.rank){grid-column:1/-1}
+ html body #catalog-toolbar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+ html body #catalog-toolbar #search{grid-column:1/-1}
+}
+/* Sem a busca do catálogo (fica só a do topo): botão "Ordenar e filtrar" ocupa a linha no celular */
+.filters-toggle span{display:none}
+@media(max-width:680px){
+ html body .filters-toggle{grid-column:1/-1!important;justify-self:stretch;width:auto!important;justify-content:center;gap:8px;padding:0 16px!important}
+ html body .filters-toggle span{display:inline}
+}
+html body #catalog-toolbar.filters-open .filters-toggle span{transform:none!important}
