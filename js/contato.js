@@ -12,7 +12,7 @@
 
   const msg = {
     pt: { sending: "Enviando…", ok: "Mensagem enviada! Obrigada pelo contato ✦", err: "Não foi possível enviar: ", abrindo: "O envio não respondeu. Abrimos seu app de e-mail com a mensagem pronta: é só enviar." },
-    en: { sending: "Sending…", ok: "Message sent! Thank you for reaching out ✦", err: "Couldn't send: ", abrindo: "Sending did not respond. We opened your email app with the message ready: just hit send." }
+    en: { sending: "Sending…", ok: "Message sent! Thanks for reaching out ✦", err: "Couldn't send your message: ", abrindo: "We couldn't reach the server, so we opened your email app with your message ready—just hit send." }
   };
   const lang = () => (document.documentElement.lang === "en" ? "en" : "pt");
   let voltarPara = null;

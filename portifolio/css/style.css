@@ -456,3 +456,59 @@ html[data-theme="light"] .contact-form { background: rgba(255, 255, 255, .55); }
 @media (prefers-reduced-motion: reduce) {
     .about-band::before, .about-band::after { animation: none; }
 }
+
+/* 15. CELULAR E TELAS PEQUENAS ------------------------------- */
+/* Itens de grade/flex não podem ser mais largos que a tela (antes o endereço
+   da demonstração, numa linha só, esticava a página para ~640px no celular). */
+.section-heading > *, .how-layout > *, .about-band-inner > *, .feature-grid > *, .project-grid > * { min-width: 0; }
+.demo-bar em { min-width: 0; }
+.contact-list li > * { min-width: 0; overflow-wrap: anywhere; }
+img, iframe { max-width: 100%; }
+
+@media (max-width: 640px) {
+    html { scroll-padding-top: 70px; }
+    .header { padding: 10px 16px; gap: 10px; }
+    .brand { font-size: 24px; }
+    .header-actions { gap: 6px; }
+    .lang-switch, .icon-action, .menu-button { height: 38px; }
+    .icon-action { width: 38px; }
+    .menu-button { width: 38px; }
+    .lang-option { padding: 0 8px; gap: 4px; font-size: 11px; }
+
+    .hero { min-height: auto; padding: 110px 20px 90px; }
+    .hero-content > h2 { font-size: 26px; }
+    .hero-content > p { font-size: 15px; }
+    .hero-actions { flex-direction: column; align-items: stretch; }
+    .hero-actions .cta { width: 100%; }
+    .eyebrow { letter-spacing: .14em; }
+
+    .editorial-section, .about-band { padding: 64px 20px; }
+    .section-heading { margin-bottom: 32px; }
+    .section-heading h2, .how-title h2, .about-band h2 { font-size: 32px; }
+    .section-label, .eyebrow { font-size: 12px; }
+
+    .feature { padding: 22px; }
+    .chips li { font-size: 13px; }
+    .text-link { padding: 12px 0; }
+
+    .filters { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 6px; margin-inline: -20px; padding-inline: 20px; scrollbar-width: none; }
+    .filter { flex: none; padding: 10px 16px; }
+    .project-body { padding: 20px; }
+    .project-body h3 { font-size: 24px; }
+    .tags li { font-size: 12.5px; padding: 4px 10px; }
+    .project-links a { display: inline-block; padding: 10px 0; font-size: 14px; }
+
+    .demo-tabs { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: -20px; padding-inline: 20px; }
+    .demo-tab { flex: none; padding: 10px 14px; }
+    .demo-bar { flex-wrap: wrap; }
+    .demo-bar em { flex-basis: 100%; order: 3; margin-left: 0; }
+    .demo-view { aspect-ratio: 9 / 14; }
+
+    .contact-form { padding: 20px; }
+    .contact-form .cta { width: 100%; justify-self: stretch; }
+    .contact-form input, .contact-form select, .contact-form textarea { font-size: 16px; } /* evita zoom automático no iPhone */
+    .contact-list li { padding: 12px 0; }
+    .contact-list a { display: inline-block; padding: 4px 0; }
+
+    footer { flex-direction: column; align-items: flex-start; padding: 22px 20px; }
+}
