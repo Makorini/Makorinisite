@@ -631,3 +631,16 @@ html[data-theme="light"] .lang-option[aria-pressed="true"] { color: #fff; }
 /* Modo claro: estrelas mais escuras (cor usada pelo céu animado) e logo legível */
 html[data-theme="light"] .brand > span { color: #5b3fd6; }
 html[data-theme="light"] .brand > i { color: #3b5fd9; }
+
+/* Títulos do "Sobre" com o mesmo degradê do "Makorini" do topo */
+.feature h3 {
+    display: inline-block;
+    background: linear-gradient(100deg, #ffffff 0%, #cfe4ff 35%, #c4a6ff 70%, #8ec5ff 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 18px rgba(120, 110, 255, .3));
+}
+html[data-theme="light"] .feature h3 {
+    background-image: linear-gradient(100deg, #1d1a45 0%, #3b5fd9 45%, #7a45d6 80%);
+    filter: none;
+}
