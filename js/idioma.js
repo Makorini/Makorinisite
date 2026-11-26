@@ -24,12 +24,12 @@
       "dialog.send": "Enviar"
     },
     en: {
-      "title": "Makorini — Where your idea gets modern",
+      "title": "Makorini — Where ideas come to life",
       "nav.projects": "See projects",
       "nav.cv": "Résumé",
       "nav.contact": "Contact",
-      "hero.subtitle": "Where your idea gets modern",
-      "hero.text": "Makorini builds custom websites, systems and applications. Every project is designed to grow along with the person who imagined it.",
+      "hero.subtitle": "Where ideas come to life",
+      "hero.text": "Makorini builds custom websites, systems and applications. Every project is designed to grow alongside the person who dreamed it up.",
       "btn.projects": "See projects",
       "btn.cv": "Résumé",
       "btn.contact": "Get in touch",

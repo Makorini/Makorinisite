@@ -52,7 +52,7 @@
     function renderProjects(jaVisiveis) {
         grid.innerHTML = projetos.map((p) => {
             const thumb = p.imagem
-                ? `<img src="${esc(p.imagem)}" alt="${esc(t("card.alt") + p.titulo)}" loading="lazy">`
+                ? `<img src="${esc(p.imagem)}" alt="${esc(t("card.alt") + L(p, "titulo"))}" loading="lazy">`
                 : `<div class="thumb-mark"><div><small>${t("card.star")}</small>${esc(p.titulo)}</div></div>`;
             const links = Object.entries(p.links || {})
                 .filter(([, url]) => url)
@@ -64,9 +64,9 @@
                 <div class="project-thumb">${thumb}<span class="project-badge">${esc(L(p, "selo"))}</span></div>
                 <div class="project-body">
                     <div class="project-top">${esc(p.ano)}</div>
-                    <h3>${esc(p.titulo)}</h3>
+                    <h3>${esc(L(p, "titulo"))}</h3>
                     <p>${esc(L(p, "descricao"))}</p>
-                    <ul class="tags">${p.tags.map((tag) => `<li>${esc(tag)}</li>`).join("")}</ul>
+                    <ul class="tags">${((getLang() === "en" && p.en && p.en.tags) || p.tags).map((tag) => `<li>${esc(tag)}</li>`).join("")}</ul>
                     <div class="project-links">${links || `<span class="project-top">${t("card.private")}</span>`}</div>
                 </div>
             </article>`;
