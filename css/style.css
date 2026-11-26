@@ -1145,3 +1145,12 @@ body.contact-open { overflow: hidden; }
   .contact-dialog-form input, .contact-dialog-form textarea { font-size: 16px; } /* evita zoom automático no iPhone */
   .contact-dialog-form { padding: 32px 20px 24px; }
 }
+
+/* MAKORINI sempre em uma linha: a fonte diminui para caber na coluna do texto
+   (a palavra tem ~8,6x a altura da fonte de largura; 11cqi deixa folga para a borda). */
+.hero-content { container-type: inline-size; }
+.hero-title {
+  white-space: nowrap;
+  word-break: normal;
+  font-size: min(var(--fs-3), 11cqi);
+}
