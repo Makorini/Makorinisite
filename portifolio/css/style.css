@@ -583,3 +583,18 @@ html[data-theme="light"] .feature { border-left-color: rgba(70, 70, 160, .25); }
 html[data-theme="light"] .header:not(.scrolled) .lang-switch,
 html[data-theme="light"] .header:not(.scrolled) .icon-action,
 html[data-theme="light"] .header:not(.scrolled) .menu-button { border-color: rgba(60, 60, 140, .25); }
+
+/* Botões principais em pílula: mais largos, mais baixos e com menos espaço interno */
+.cta {
+    border-radius: 999px;
+    min-height: 46px;
+    padding: 10px 36px;
+    gap: 12px;
+}
+.hero-actions { gap: 12px; }
+.hero-actions .cta { min-width: 220px; }
+.cta.ghost { border: 1px solid rgba(255, 255, 255, .16); }
+html[data-theme="light"] .cta.ghost { border-color: rgba(60, 60, 140, .25); }
+@media (max-width: 640px) {
+    .hero-actions .cta { min-width: 0; }
+}
