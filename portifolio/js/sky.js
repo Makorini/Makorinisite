@@ -56,8 +56,8 @@
                 const dx = a.x - b.x, dy = a.y - b.y;
                 const d = dx * dx + dy * dy;
                 if (d < LINK * LINK) {
-                    const alpha = (1 - Math.sqrt(d) / LINK) * (light ? 0.28 : 0.22);
-                    ctx.strokeStyle = light ? `rgba(90,80,200,${alpha})` : `rgba(160,170,255,${alpha})`;
+                    const alpha = (1 - Math.sqrt(d) / LINK) * (light ? 0.5 : 0.22);
+                    ctx.strokeStyle = light ? `rgba(45,38,140,${alpha})` : `rgba(160,170,255,${alpha})`;
                     ctx.lineWidth = 0.7;
                     ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
                 }
@@ -66,7 +66,7 @@
             const mx = a.x - mouse.x, my = a.y - mouse.y;
             const md = Math.sqrt(mx * mx + my * my);
             if (md < 170) {
-                ctx.strokeStyle = light ? `rgba(110,70,210,${(1 - md / 170) * 0.45})` : `rgba(196,166,255,${(1 - md / 170) * 0.5})`;
+                ctx.strokeStyle = light ? `rgba(70,40,170,${(1 - md / 170) * 0.6})` : `rgba(196,166,255,${(1 - md / 170) * 0.5})`;
                 ctx.lineWidth = 0.8;
                 ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
             }
@@ -77,8 +77,9 @@
             s.phase += s.speed;
             const tw = 0.55 + Math.sin(s.phase) * 0.45;
             const rgb = light ? starRGB : s.tint;
-            ctx.fillStyle = `rgba(${rgb},${tw})`;
-            ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
+            // No modo claro as estrelas ficam mais escuras, quase sempre visíveis e 40% maiores.
+            ctx.fillStyle = `rgba(${rgb},${light ? 0.55 + tw * 0.45 : tw})`;
+            ctx.beginPath(); ctx.arc(s.x, s.y, light ? s.r * 1.4 : s.r, 0, Math.PI * 2); ctx.fill();
             if (s.r > 1.25 && !light) {               // brilho nas estrelas maiores
                 ctx.fillStyle = `rgba(${rgb},${tw * 0.12})`;
                 ctx.beginPath(); ctx.arc(s.x, s.y, s.r * 4, 0, Math.PI * 2); ctx.fill();
