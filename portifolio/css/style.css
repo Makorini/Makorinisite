@@ -560,3 +560,26 @@ html[data-theme="light"] .feature { border-left-color: rgba(70, 70, 160, .25); }
 }
 .project-links a:hover::after,
 #demo-open:hover::after { transform: rotate(72deg) scale(1.15); }
+
+/* 16. TOPO NO ESTILO DO VITIEXPERT: botões arredondados com borda transparente */
+.header.scrolled { border-bottom: 1px solid rgba(255, 255, 255, .09); }
+.lang-switch {
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .06);
+    overflow: hidden;
+}
+.lang-option { border-radius: 999px; }
+.lang-option[aria-pressed="true"] { box-shadow: 0 0 14px rgba(120, 100, 255, .45); }
+.icon-action,
+.menu-button {
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .06);
+}
+.icon-action:hover,
+.menu-button:hover { background: rgba(255, 255, 255, .14); border-color: rgba(159, 208, 255, .7); }
+.menu-button span { border-radius: 2px; }
+html[data-theme="light"] .header:not(.scrolled) .lang-switch,
+html[data-theme="light"] .header:not(.scrolled) .icon-action,
+html[data-theme="light"] .header:not(.scrolled) .menu-button { border-color: rgba(60, 60, 140, .25); }
