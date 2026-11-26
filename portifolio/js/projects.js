@@ -53,7 +53,7 @@ window.PROJETOS = [
         tags: ["Python", "FastAPI", "EasyOCR", "Ollama", "Chrome Extension"],
         imagem: "assets/img/translator.png",
         links: { codigo: "https://github.com/SEU-USUARIO/makorini-translator" },
-        demo: { tipo: "imagem", src: "assets/img/translator.png", legenda: "Editor do Makorini Translator. Roda localmente com Python + Ollama." }
+        demo: { tipo: "imagem", src: "assets/img/capas/translator-home.jpg", legenda: "Editor do Makorini Translator. Roda localmente com Python + Ollama." }
     },
     {
         id: "makorini-biblioteca",
@@ -101,7 +101,8 @@ window.PROJETOS = [
         en: { titulo: "Makorini Management System", selo: "Management", descricao: "Management system with user login, online booking, a landing page, a location page, and an internal dashboard. Built with Google Apps Script and Google Sheets—no server costs." },
         tags: ["Google Apps Script", "Google Sheets", "HTML", "CSS"],
         imagem: "assets/img/capas/makorini-sistema-gestao.jpg",
-        links: { site: "https://script.google.com/macros/s/AKfycbwbTrMEKG1gZw4V8BJuZ4YY0OnjuIDKIDDV_JdqSItHBNS2A0iUz9VR9yGUUb2RU5Ag/exec?pagina=publico" }
+        links: { site: "https://script.google.com/macros/s/AKfycbwbTrMEKG1gZw4V8BJuZ4YY0OnjuIDKIDDV_JdqSItHBNS2A0iUz9VR9yGUUb2RU5Ag/exec?pagina=publico" },
+        demo: { tipo: "imagem", src: "assets/img/capas/makorini-sistema-gestao.jpg", legenda: "Tela de login do Makorini Sistema Gestão. Use o botão para abrir o sistema publicado." }
     },
     {
         id: "makorini-platform",
