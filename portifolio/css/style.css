@@ -525,3 +525,22 @@ img, iframe { max-width: 100%; }
 .scroll-mark::before { content: "↓"; display: block; animation: seta-pula 1.8s ease-in-out infinite; }
 .scroll-mark:hover { color: #fff; }
 @keyframes seta-pula { 0%, 100% { transform: translateY(0); opacity: .6; } 50% { transform: translateY(8px); opacity: 1; } }
+
+/* Sobre: três blocos sem caixa, separados por barrinhas finas */
+.feature-grid { gap: 0; }
+.feature {
+    min-height: 0;
+    padding: 6px clamp(20px, 3vw, 44px);
+    background: none;
+    backdrop-filter: none; -webkit-backdrop-filter: none;
+    border-left: 1px solid rgba(160, 170, 255, .28);
+}
+.feature:first-child { border-left: 0; padding-left: 0; }
+.feature:hover { transform: none; background: none; box-shadow: none; }
+.feature h3 { margin-top: 0; }
+html[data-theme="light"] .feature { border-left-color: rgba(70, 70, 160, .25); }
+@media (max-width: 860px) {
+    .feature, .feature:first-child { border-left: 0; padding: 22px 0; border-top: 1px solid rgba(160, 170, 255, .28); }
+    .feature:first-child { border-top: 0; padding-top: 0; }
+    html[data-theme="light"] .feature { border-top-color: rgba(70, 70, 160, .25); }
+}
