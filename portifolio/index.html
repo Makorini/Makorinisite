@@ -200,13 +200,11 @@
                     </ul>
                 </div>
 
-                <!-- Formulário sem servidor: o envio é feito pelo serviço gratuito FormSubmit.
-                     Na 1ª mensagem, o FormSubmit manda um e-mail de ativação para o endereço abaixo. -->
+                <!-- Formulário sem servidor: envia para o App da Web "Contato Makorini" (Google Apps Script),
+                     que manda a mensagem para makorini.dev@gmail.com. -->
                 <form class="contact-form" id="contact-form"
-                      action="https://formsubmit.co/6ec0e0985c2e9b65a54355463440affb" method="POST">
-                    <input type="hidden" name="_subject" value="Nova mensagem pelo portfólio Makorini">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="false">
+                      action="https://script.google.com/macros/s/AKfycbywJ_q1b6e5JCpWoLjVeNS99M64nxDkpHJ3IKMRtoHv7lzJlBFDjH8pfuC4fmjuVU1P1A/exec" method="POST">
+                    <input type="hidden" name="origem" value="portfólio">
                     <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off">
 
                     <label><span data-i18n="form.name">Nome</span><input type="text" name="nome" required autocomplete="name"></label>
@@ -232,9 +230,9 @@
         <p>© <span id="year"></span> <span data-i18n="footer.text">Bianca Stefany Maccarini · Feito com HTML, CSS e JavaScript · Hospedado no GitHub Pages</span></p>
     </footer>
 
-    <script src="js/i18n.js?v=6"></script>
+    <script src="js/i18n.js?v=7"></script>
     <script src="js/projects.js?v=5"></script>
     <script src="js/sky.js?v=2"></script>
-    <script src="js/main.js?v=6"></script>
+    <script src="js/main.js?v=7"></script>
 </body>
 </html>

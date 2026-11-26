@@ -121,9 +121,9 @@
     </div>
   </footer>
 
-  <!-- Janela "Entrar em contato": envia e-mail para makorini.dev@gmail.com pelo FormSubmit (sem servidor). -->
+  <!-- Janela "Entrar em contato": envia para o App da Web "Contato Makorini" (Google Apps Script), que manda e-mail para makorini.dev@gmail.com. -->
   <div class="contact-dialog" id="contact-dialog" role="dialog" aria-modal="true" aria-labelledby="contact-dialog-title" hidden>
-    <form class="contact-dialog-form" id="contact-dialog-form" action="https://formsubmit.co/6ec0e0985c2e9b65a54355463440affb" method="POST">
+    <form class="contact-dialog-form" id="contact-dialog-form" action="https://script.google.com/macros/s/AKfycbywJ_q1b6e5JCpWoLjVeNS99M64nxDkpHJ3IKMRtoHv7lzJlBFDjH8pfuC4fmjuVU1P1A/exec" method="POST">
       <button class="contact-dialog-close" type="button" data-close-contact aria-label="Fechar">
         <ion-icon name="close-outline" aria-hidden="true"></ion-icon>
       </button>
@@ -131,9 +131,7 @@
       <p class="h4 contact-dialog-title" id="contact-dialog-title" data-i18n="dialog.title">Entrar em contato</p>
       <p class="contact-dialog-text" data-i18n="dialog.text">Escreva sua mensagem. Ela chega direto no meu e-mail.</p>
 
-      <input type="hidden" name="_subject" value="Nova mensagem pelo cartão Makorini">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="origem" value="cartão de visita">
       <input type="text" name="_honey" class="contact-dialog-honey" tabindex="-1" autocomplete="off">
 
       <label><span data-i18n="dialog.name">Nome</span>
@@ -156,7 +154,7 @@
 
   <script src="./js/script.js"></script>
   <script src="./js/idioma.js?v=2"></script>
-  <script src="./js/contato.js?v=5"></script>
+  <script src="./js/contato.js?v=6"></script>
 
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

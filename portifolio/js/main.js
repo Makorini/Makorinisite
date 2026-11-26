@@ -146,13 +146,13 @@
     }, { threshold: 0.12 });
     $$(".reveal").forEach((el) => rev.observe(el));
 
-    /* ---------- Formulário de contato (FormSubmit, sem servidor) ---------- */
+    /* ---------- Formulário de contato (Google Apps Script, sem servidor) ---------- */
     const form = $("#contact-form"), status = $("#form-status");
 
-    // Plano B: se o FormSubmit não responder, abre o app de e-mail de quem escreve, com tudo preenchido.
+    // Plano B: se o envio falhar, abre o app de e-mail de quem escreve, com tudo preenchido.
     function abrirEmail(dados) {
         const corpo = `Nome: ${dados.nome || ""}\nE-mail: ${dados.email || ""}\nAssunto: ${dados.assunto || ""}\n\n${dados.mensagem || ""}`;
-        location.href = "mailto:makorini.dev@gmail.com?subject=" + encodeURIComponent(dados._subject || "Contato pelo site Makorini") + "&body=" + encodeURIComponent(corpo);
+        location.href = "mailto:makorini.dev@gmail.com?subject=" + encodeURIComponent("Contato pelo site Makorini") + "&body=" + encodeURIComponent(corpo);
     }
 
     form.addEventListener("submit", async (e) => {
@@ -164,23 +164,22 @@
         status.textContent = t("form.sending");
         try {
             const data = Object.fromEntries(new FormData(form));
-            // Espera até 40 segundos: o FormSubmit às vezes demora ~30 s para responder.
+            // Espera até 20 segundos pela resposta do Apps Script.
             const ctrl = new AbortController();
-            const limite = setTimeout(() => ctrl.abort(), 40000);
-            const resp = await fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
+            const limite = setTimeout(() => ctrl.abort(), 20000);
+            const resp = await fetch(form.action, {
                 signal: ctrl.signal,
                 method: "POST",
-                headers: { "Content-Type": "application/json", Accept: "application/json" },
+                headers: { "Content-Type": "text/plain;charset=utf-8" },
                 body: JSON.stringify(data)
             });
             clearTimeout(limite);
-            // O FormSubmit responde 200 mesmo quando recusa (ex.: formulário ainda não ativado),
-            // então é preciso ler "success" e "message" da resposta.
+            // O Apps Script responde { success: true/false, message }.
             let r = {};
             try { r = await resp.json(); } catch (x) {}
-            if (!resp.ok || String(r.success) !== "true") {
+            if (!resp.ok || r.success !== true) {
                 const erro = new Error(r.message || String(resp.status));
-                erro.ativacao = /activat/i.test(r.message || "");
+                erro.respondeu = resp.ok; // o script respondeu (ex.: e-mail inválido)
                 throw erro;
             }
             form.reset();
@@ -188,13 +187,13 @@
             status.textContent = t("form.ok");
         } catch (err) {
             status.className = "form-status err";
-            if (err.ativacao) {
-                status.innerHTML = t("form.activate");
+            if (err.respondeu) {
+                status.textContent = t("form.err2") + err.message;
             } else {
                 status.innerHTML = t("form.mailto");
                 abrirEmail(Object.fromEntries(new FormData(form)));
             }
-            console.warn("FormSubmit:", err.message);
+            console.warn("Contato:", err.message);
         } finally {
             btn.disabled = false;
         }

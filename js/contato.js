@@ -1,8 +1,7 @@
 /* ============================================================
    JANELA "ENTRAR EM CONTATO" DO CARTÃO DE VISITA
    Abre um formulário e envia a mensagem para makorini.dev@gmail.com
-   pelo serviço gratuito FormSubmit (o GitHub Pages não tem servidor).
-   Na 1ª mensagem, o FormSubmit manda um e-mail de ativação para esse endereço.
+   pelo App da Web "Contato Makorini" (Google Apps Script), já que o GitHub Pages não tem servidor.
    Qualquer link com o atributo data-open-contact abre esta janela.
    ============================================================ */
 (function () {
@@ -12,8 +11,8 @@
   if (!janela || !form) return;
 
   const msg = {
-    pt: { sending: "Enviando… pode levar até 30 segundos.", ok: "Mensagem enviada! Obrigada pelo contato ✦", err: "Não foi possível enviar agora. Escreva para makorini.dev@gmail.com.", abrindo: "O serviço de envio não respondeu. Abrimos seu app de e-mail com a mensagem pronta: é só enviar.", ativacao: "O formulário ainda precisa ser ativado: a dona do site recebeu um e-mail do FormSubmit para confirmar. Enquanto isso, escreva para makorini.dev@gmail.com." },
-    en: { sending: "Sending… this can take up to 30 seconds.", ok: "Message sent! Thank you for reaching out ✦", err: "Couldn't send right now. Please email makorini.dev@gmail.com.", abrindo: "The sending service did not respond. We opened your email app with the message ready: just hit send.", ativacao: "This form still needs to be activated (a confirmation email was sent to the site owner). Meanwhile, please email makorini.dev@gmail.com." }
+    pt: { sending: "Enviando…", ok: "Mensagem enviada! Obrigada pelo contato ✦", err: "Não foi possível enviar: ", abrindo: "O envio não respondeu. Abrimos seu app de e-mail com a mensagem pronta: é só enviar." },
+    en: { sending: "Sending…", ok: "Message sent! Thank you for reaching out ✦", err: "Couldn't send: ", abrindo: "Sending did not respond. We opened your email app with the message ready: just hit send." }
   };
   const lang = () => (document.documentElement.lang === "en" ? "en" : "pt");
   let voltarPara = null;
@@ -42,10 +41,10 @@
   janela.addEventListener("click", (e) => { if (e.target === janela) fechar(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !janela.hidden) fechar(); });
 
-  // Plano B: se o FormSubmit não responder, abre o app de e-mail de quem escreve, com tudo preenchido.
+  // Plano B: se o envio falhar, abre o app de e-mail de quem escreve, com tudo preenchido.
   function abrirEmail(dados) {
     const corpo = `Nome: ${dados.nome || ""}\nE-mail: ${dados.email || ""}\n\n${dados.mensagem || ""}`;
-    location.href = "mailto:makorini.dev@gmail.com?subject=" + encodeURIComponent(dados._subject || "Contato pelo site Makorini") + "&body=" + encodeURIComponent(corpo);
+    location.href = "mailto:makorini.dev@gmail.com?subject=" + encodeURIComponent("Contato pelo site Makorini") + "&body=" + encodeURIComponent(corpo);
   }
 
   form.addEventListener("submit", async (e) => {
@@ -57,23 +56,22 @@
     status.textContent = msg[lang()].sending;
     try {
       const dados = Object.fromEntries(new FormData(form));
-      // Espera até 40 segundos: o FormSubmit às vezes demora ~30 s para responder.
+      // Espera até 20 segundos pela resposta do Apps Script.
       const ctrl = new AbortController();
-      const limite = setTimeout(() => ctrl.abort(), 40000);
-      const resp = await fetch(form.action.replace("formsubmit.co/", "formsubmit.co/ajax/"), {
+      const limite = setTimeout(() => ctrl.abort(), 20000);
+      const resp = await fetch(form.action, {
         signal: ctrl.signal,
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify(dados)
       });
       clearTimeout(limite);
-      // O FormSubmit responde 200 mesmo quando recusa (ex.: formulário ainda não ativado),
-      // então é preciso ler "success" e "message" da resposta.
+      // O Apps Script responde { success: true/false, message }.
       let r = {};
       try { r = await resp.json(); } catch (x) {}
-      if (!resp.ok || String(r.success) !== "true") {
+      if (!resp.ok || r.success !== true) {
         const erro = new Error(r.message || String(resp.status));
-        erro.ativacao = /activat/i.test(r.message || "");
+        erro.respondeu = resp.ok; // o script respondeu (ex.: e-mail inválido)
         throw erro;
       }
       form.reset();
@@ -81,13 +79,13 @@
       status.textContent = msg[lang()].ok;
     } catch (err) {
       status.className = "contact-dialog-status err";
-      if (err.ativacao) {
-        status.textContent = msg[lang()].ativacao;
+      if (err.respondeu) {
+        status.textContent = msg[lang()].err + err.message;
       } else {
         status.textContent = msg[lang()].abrindo;
         abrirEmail(Object.fromEntries(new FormData(form)));
       }
-      console.warn("FormSubmit:", err.message);
+      console.warn("Contato:", err.message);
     } finally {
       botao.disabled = false;
     }
