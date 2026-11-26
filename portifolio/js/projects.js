@@ -23,11 +23,11 @@ window.PROJETOS = [
         ano: "2026",
         categorias: ["sistema", "ia", "academico"],
         descricao: "Sistema especialista para diagnóstico de doenças em videiras com regras SE/ENTÃO e fatores de certeza, catálogo de doenças e pragas, clima e notícias. Em português, inglês e espanhol.",
-        en: { selo: "Capstone", descricao: "Expert system that diagnoses grapevine diseases using IF-THEN rules and certainty factors. Includes a disease and pest catalog, local weather, and news, in Portuguese, English, and Spanish.", legenda: "VitiExpert architecture: web interface, inference engine, and knowledge base.", tags: ["Python", "Flask", "Expert Systems", "JavaScript", "Pytest"] },
+        en: { selo: "Capstone", descricao: "Expert system that diagnoses grapevine diseases using IF-THEN rules and certainty factors. Includes a disease and pest catalog, local weather, and news, in Portuguese, English, and Spanish.", legenda: "A real VitiExpert diagnosis: hypotheses ranked by the confidence level calculated from the rules.", tags: ["Python", "Flask", "Expert Systems", "JavaScript", "Pytest"] },
         tags: ["Python", "Flask", "Sistemas Especialistas", "JavaScript", "Pytest"],
         imagem: "assets/img/capas/vitiexpert.jpg",
         links: { codigo: "https://github.com/SEU-USUARIO/VitiExpert" },
-        demo: { tipo: "imagem", src: "assets/img/vitiexpert-arquitetura.png", legenda: "Arquitetura do VitiExpert: interface web, motor de inferência e base de conhecimento." }
+        demo: { tipo: "imagem", src: "assets/img/capas/vitiexpert-diagnostico.jpg", legenda: "Diagnóstico real do VitiExpert: hipóteses ordenadas pelo nível de confiança calculado pelas regras." }
     },
     {
         id: "makorini-books",
