@@ -512,3 +512,9 @@ img, iframe { max-width: 100%; }
 
     footer { flex-direction: column; align-items: flex-start; padding: 22px 20px; }
 }
+
+/* Confirmação do formulário bem visível */
+.form-status.ok, .form-status.err { padding: 14px 16px; font-size: 15px; font-weight: 600; }
+.form-status.ok { background: rgba(60, 200, 140, .15); border-left: 3px solid #5fe0a6; }
+.form-status.err { background: rgba(255, 100, 140, .12); border-left: 3px solid #ff8fae; }
+.form-status.ok::before { content: "✓ "; font-weight: 800; }

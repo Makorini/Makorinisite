@@ -25,6 +25,7 @@
     if (navbar) document.querySelector("[data-nav-toggle-btn]").click();
     status.textContent = "";
     status.className = "contact-dialog-status";
+    form.classList.remove("enviado");
     janela.hidden = false;
     document.body.classList.add("contact-open");
     setTimeout(() => form.querySelector('input[name="nome"]').focus(), 50);
@@ -49,7 +50,7 @@
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    if (form._honey.value) return; // robô preencheu o campo escondido
+    if (form.botcheck && form.botcheck.checked) return; // robô marcou a caixinha escondida
     const botao = form.querySelector('button[type="submit"]');
     botao.disabled = true;
     status.className = "contact-dialog-status";
@@ -75,6 +76,7 @@
         throw erro;
       }
       form.reset();
+      form.classList.add("enviado"); // esconde os campos e mostra a confirmação grande
       status.className = "contact-dialog-status ok";
       status.textContent = msg[lang()].ok;
     } catch (err) {

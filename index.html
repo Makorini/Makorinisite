@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="./css/style.css?v=15">
+  <link rel="stylesheet" href="./css/style.css?v=16">
 
   <link rel="preload" as="image" href="./images/hero-banner.jpg">
 
@@ -132,7 +132,8 @@
       <p class="contact-dialog-text" data-i18n="dialog.text">Escreva sua mensagem. Ela chega direto no meu e-mail.</p>
 
       <input type="hidden" name="origem" value="cartão de visita">
-      <input type="text" name="_honey" class="contact-dialog-honey" tabindex="-1" autocomplete="off">
+      <!-- Anti-robô: caixinha escondida (o autopreenchimento do navegador não marca) -->
+      <input type="checkbox" name="botcheck" class="contact-dialog-honey" tabindex="-1" aria-hidden="true">
 
       <label><span data-i18n="dialog.name">Nome</span>
         <input type="text" name="nome" required autocomplete="name">
@@ -154,7 +155,7 @@
 
   <script src="./js/script.js"></script>
   <script src="./js/idioma.js?v=3"></script>
-  <script src="./js/contato.js?v=6"></script>
+  <script src="./js/contato.js?v=8"></script>
 
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

@@ -1154,3 +1154,29 @@ body.contact-open { overflow: hidden; }
   word-break: normal;
   font-size: min(var(--fs-3), 11cqi);
 }
+
+/* Janela de contato: depois de enviar, esconde os campos e mostra a confirmação grande */
+.contact-dialog-form.enviado label,
+.contact-dialog-form.enviado .contact-dialog-send,
+.contact-dialog-form.enviado .contact-dialog-text { display: none; }
+.contact-dialog-form.enviado .contact-dialog-status.ok {
+  display: grid;
+  place-items: center;
+  gap: 10px;
+  padding: 36px 10px 24px;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+}
+.contact-dialog-form.enviado .contact-dialog-status.ok::before {
+  content: "✓";
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: hsl(150, 60%, 40%);
+  color: var(--white);
+  font-size: 3.2rem;
+}
+.contact-dialog-status.err { font-size: 1.5rem; font-weight: 600; }

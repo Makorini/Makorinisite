@@ -157,7 +157,7 @@
 
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
-        if (form._honey.value) return;               // robô preencheu o campo oculto
+        if (form.botcheck && form.botcheck.checked) return; // robô marcou a caixinha escondida
         const btn = form.querySelector("button[type=submit]");
         btn.disabled = true;
         status.className = "form-status";
