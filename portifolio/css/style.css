@@ -518,3 +518,10 @@ img, iframe { max-width: 100%; }
 .form-status.ok { background: rgba(60, 200, 140, .15); border-left: 3px solid #5fe0a6; }
 .form-status.err { background: rgba(255, 100, 140, .12); border-left: 3px solid #ff8fae; }
 .form-status.ok::before { content: "✓ "; font-weight: 800; }
+
+/* Indicador de rolagem: seta ↓ que pula (o desenho de mouse perdeu o contorno quando as bordas foram removidas) */
+.scroll-mark { width: auto; height: auto; padding: 8px 12px; border: 0; color: rgba(200, 210, 255, .75); font-size: 22px; line-height: 1; }
+.scroll-mark span { display: none; }
+.scroll-mark::before { content: "↓"; display: block; animation: seta-pula 1.8s ease-in-out infinite; }
+.scroll-mark:hover { color: #fff; }
+@keyframes seta-pula { 0%, 100% { transform: translateY(0); opacity: .6; } 50% { transform: translateY(8px); opacity: 1; } }
